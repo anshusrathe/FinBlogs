@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Financial Insights - Research Reports{% endblock %}
+
+{% block content %}
+<!-- Section 1: Introduction -->
+<section class="hero" id="intro">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Financial Research & Analysis</h1>
+            <p>In-depth financial reports based on thorough market research and data analysis. Helping investors make informed decisions in today's complex financial landscape.</p>
+            <a href="#reports" class="btn btn-primary">View Latest Reports</a>
+        </div>
+    </div>
+</section>
+
+<!-- Section 2: List of Reports -->
+<section class="reports-list" id="reports">
+    <div class="container">
+        <div class="section-header">
+            <h2>Research Reports</h2>
+            <p>A comprehensive collection of financial analyses</p>
+        </div>
+        <div class="reports-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Report Title</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Summary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in reports %}
+                    <tr>
+                        <td><a href="{{ report.url }}">{{ report.title }}</a></td>
+                        <td>{{ report.date }}</td>
+                        <td>{{ report.category }}</td>
+                        <td>{{ report.summary }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: Cards View of Reports -->
+<section class="featured-reports" id="featured">
+    <div class="container">
+        <div class="section-header">
+            <h2>Featured Analysis</h2>
+            <p>Highlighted financial reports and market insights</p>
+        </div>
+        <div class="report-cards">
+            {% for report in featured_reports %}
+            <div class="card">
+                <div class="card-header">
+                    <span class="category">{{ report.category }}</span>
+                    <span class="date">{{ report.date }}</span>
+                </div>
+                <div class="card-body">
+                    <h3><a href="{{ report.url }}">{{ report.title }}</a></h3>
+                    <p>{{ report.excerpt }}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ report.url }}" class="btn btn-outline">Read Full Report</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Signup -->
+<section class="newsletter">
+    <div class="container">
+        <div class="newsletter-content">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to receive my latest financial insights directly to your inbox</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

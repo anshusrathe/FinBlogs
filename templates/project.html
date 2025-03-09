@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}{{ report.title }} | Financial Insights{% endblock %}
+
+{% block head %}
+<meta name="description" content="{{ report.summary }}">
+{% endblock %}
+
+{% block content %}
+<article class="report-content">
+    <div class="container">
+        <!-- Report Header -->
+        <header class="report-header">
+            <div class="metadata">
+                <span class="category">{{ report.category }}</span>
+                <span class="date">{{ report.date }}</span>
+                <span class="reading-time">{{ report.reading_time }} min read</span>
+            </div>
+            <h1>{{ report.title }}</h1>
+            <div class="report-summary">
+                <p>{{ report.summary }}</p>
+            </div>
+        </header>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                {% for section in report.sections %}
+                <li><a href="#section-{{ loop.index }}">{{ section.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Report Content -->
+        <div class="report-body">
+            {% for section in report.sections %}
+            <section id="section-{{ loop.index }}">
+                <h2>{{ section.title }}</h2>
+                {{ section.content }}
+                
+                {% if section.charts %}
+                <div class="charts">
+                    {% for chart in section.charts %}
+                    <figure>
+                        <img src="{{ chart.url }}" alt="{{ chart.alt }}">
+                        <figcaption>{{ chart.caption }}</figcaption>
+                    </figure>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% if section.tables %}
+                <div class="tables">
+                    {% for table in section.tables %}
+                    <div class="table-container">
+                        <h3>{{ table.title }}</h3>
+                        {{ table.content }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </section>
+            {% endfor %}
+            
+            <!-- Conclusion -->
+            <section class="conclusion">
+                <h2>Conclusion</h2>
+                {{ report.conclusion }}
+            </section>
+            
+            <!-- References -->
+            {% if report.references %}
+            <section class="references">
+                <h2>References</h2>
+                <ol>
+                    {% for reference in report.references %}
+                    <li id="ref-{{ loop.index }}">{{ reference }}</li>
+                    {% endfor %}
+                </ol>
+            </section>
+            {% endif %}
+        </div>
+        
+        <!-- Author Bio -->
+        <div class="author-bio">
+            <h3>About the Author</h3>
+            <div class="author-content">
+                <div class="author-image">
+                    <img src="/assets/images/author.jpg" alt="Author profile">
+                </div>
+                <div class="author-details">
+                    <p>{{ author.bio }}</p>
+                    <div class="author-links">
+                        {% if author.twitter %}
+                        <a href="{{ author.twitter }}" class="social-link"><i class="fab fa-twitter"></i></a>
+                        {% endif %}
+                        {% if author.linkedin %}
+                        <a href="{{ author.linkedin }}" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Related Reports -->
+        {% if related_reports %}
+        <div class="related-reports">
+            <h3>Related Reports</h3>
+            <div class="report-cards">
+                {% for related in related_reports %}
+                <div class="card">
+                    <div class="card-header">
+                        <span class="category">{{ related.category }}</span>
+                        <span class="date">{{ related.date }}</span>
+                    </div>
+                    <div class="card-body">
+                        <h3><a href="{{ related.url }}">{{ related.title }}</a></h3>
+                        <p>{{ related.excerpt }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ related.url }}" class="btn btn-outline">Read Report</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</article>
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/report.js"></script>
+{% endblock %}
