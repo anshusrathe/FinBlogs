@@ -7,22 +7,23 @@ title: Industrial Psychology
 
 ## Industrial Psychology
 
-#### Definition
+> [!info] Definition
+> 
+> Industrial Psychology, also known as **Work Psychology** or **Organizational Psychology** in some contexts, is a branch of psychology that applies psychological principles to the workplace. It focuses on understanding, explaining, and improving human behavior in organizational settings. It aims to enhance employee well-being, productivity, and overall organizational effectiveness.
+> 
+> In simpler terms, Industrial Psychology is about understanding people at work – their motivations, attitudes, and behaviors – and using this knowledge to make workplaces better and more productive.
 
-Industrial Psychology, also known as **Work Psychology** or **Organizational Psychology** in some contexts, is a branch of psychology that applies psychological principles to the workplace. It focuses on understanding, explaining, and improving human behavior in organizational settings. It aims to enhance employee well-being, productivity, and overall organizational effectiveness.
-
-In simpler terms, Industrial Psychology is about understanding people at work – their motivations, attitudes, and behaviors – and using this knowledge to make workplaces better and more productive.
-
-#### History
-
-The roots of Industrial Psychology can be traced back to the early 20th century. Here's a brief historical overview:
-
-*   **Early 1900s: The Scientific Management Era:**  Pioneers like **Frederick Winslow Taylor** emphasized efficiency and productivity through scientific methods. While not psychologists, their focus on work optimization laid the groundwork.  Around the same time, **Walter Dill Scott** applied psychology to advertising and management, and **Hugo Münsterberg** published "Psychology and Industrial Efficiency" in 1913, considered a foundational text.
-*   **World War I (1914-1918):**  The war spurred the application of psychology in personnel selection and placement for the military.  Psychological testing gained prominence.
-*   **The Hawthorne Studies (1920s-1930s):** Conducted at Western Electric's Hawthorne plant, these studies highlighted the **"Hawthorne effect"**, showing that social and psychological factors (like attention from researchers) could significantly impact worker productivity, sometimes even more than physical work conditions. This shifted the focus from purely scientific management to include human relations.
-*   **World War II (1939-1945):**  Similar to WWI, WWII further expanded the use of psychological testing for selection and training in the armed forces. The war also emphasized human factors in equipment design and job design.
-*   **Post-WWII (1950s onwards):** Industrial psychology expanded its scope to include areas like job satisfaction, motivation, leadership, organizational development, and group dynamics. It evolved from primarily focusing on efficiency to encompassing employee well-being and organizational culture.
-*   **Modern Era (Late 20th Century - Present):**  Industrial Psychology has become increasingly data-driven and specialized. It now addresses contemporary workplace issues such as diversity and inclusion, work-life balance, technology's impact on work, and organizational change in a globalized world. The field is often referred to as **Industrial and Organizational (I/O) Psychology** to reflect the broadened scope.
+> [!warning] History
+> 
+> The roots of Industrial Psychology can be traced back to the early 20th century. Here's a brief historical overview:
+> 
+> *   **Early 1900s: The Scientific Management Era:**  Pioneers like **Frederick Winslow Taylor** emphasized efficiency and productivity through scientific methods. While not psychologists, their focus on work optimization laid the groundwork.  Around the same time, **Walter Dill Scott** applied psychology to advertising and management, and **Hugo Münsterberg** published "Psychology and Industrial Efficiency" in 1913, considered a foundational text.
+> *   **World War I (1914-1918):**  The war spurred the application of psychology in personnel selection and placement for the military.  Psychological testing gained prominence.
+> *   **The Hawthorne Studies (1920s-1930s):** Conducted at Western Electric's Hawthorne plant, these studies highlighted the **"Hawthorne effect"**, showing that social and psychological factors (like attention from researchers) could significantly impact worker productivity, sometimes even more than physical work conditions. This shifted the focus from purely scientific management to include human relations.
+> *   **World War II (1939-1945):**  Similar to WWI, WWII further expanded the use of psychological testing for selection and training in the armed forces. The war also emphasized human factors in equipment design and job design.
+> *   **Post-WWII (1950s onwards):** Industrial psychology expanded its scope to include areas like job satisfaction, motivation, leadership, organizational development, and group dynamics. It evolved from primarily focusing on efficiency to encompassing employee well-being and organizational culture.
+> *   **Modern Era (Late 20th Century - Present):**  Industrial Psychology has become increasingly data-driven and specialized. It now addresses contemporary workplace issues such as diversity and inclusion, work-life balance, technology's impact on work, and organizational change in a globalized world. The field is often referred to as **Industrial and Organizational (I/O) Psychology** to reflect the broadened scope.
+> 
 
 #### Goals of Industrial Psychology
 
