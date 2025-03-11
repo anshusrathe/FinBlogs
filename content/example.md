@@ -1,5 +1,5 @@
 ---
-layout: report
+layout: default
 title: Your Report Title
 ---
 
