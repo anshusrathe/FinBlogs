@@ -1,86 +1,282 @@
----
-layout: default  # Inherits from your default layout (e.g., header, footer)
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale: 1.0">
+    <title>{{ page.title }}</title>
+    <!-- Link to main CSS file -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Import fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
 
-<div class="unit-container">  <!-- You can keep this if you like the container style -->
-    <div class="unit-header">
-        <div class="unit-number">Presentation</div> <!-- You can customize this -->
-        <h1 class="unit-title">Course Presentation</h1> <!-- Customize this title -->
-    </div>
+        /* PPT-specific styles */
+        /* PPT Link Styles */
+        .ppt-link-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
 
-    <!-- PPT Link Container -->
-    <div class="ppt-link-container" style="text-align: center; margin-bottom: 2rem;"> <!-- Added inline style for center alignment -->
-        <a class="ppt-link" id="open-ppt" style="display: inline-flex; align-items: center; background-color: var(--secondary); color: white; padding: 1rem 1.5rem; border-radius: var(--border-radius); text-decoration: none; font-weight: 500; transition: var(--transition); box-shadow: var(--shadow); cursor: pointer;">
-            <i class="fas fa-file-powerpoint" style="margin-right: 0.75rem; font-size: 1.25rem;"></i>
-            View Presentation Slides
-        </a>
-    </div>
+        .ppt-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--secondary, #0077b6);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius, 8px);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .ppt-link:hover {
+            background-color: var(--primary, #1a3a5f);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .ppt-link i {
+            margin-right: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        /* PPT Overlay Styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            overflow-y: auto;
+            padding-top: 3rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .overlay::-webkit-scrollbar {
+            width: 0;
+            background: transparent;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .ppt-viewer {
+            background-color: transparent;
+            border-radius: 0;
+            overflow: visible;
+            position: relative;
+            box-shadow: none;
+            padding: 0;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ppt-content {
+            max-height: none;
+            overflow-y: visible;
+            padding: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .ppt-slide {
+            background-color: white;
+            width: 95%;
+            max-width: 1000px;
+            display: block;
+            margin-bottom: 3rem;
+            padding: 3rem;
+            border: 1px solid var(--grey-medium, #adb5bd);
+            border-radius: var(--border-radius, 8px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+        }
+
+        .ppt-slide img {
+            max-width: 100%;
+            max-height: 80%;
+            border: 1px solid #ddd;
+            display: block;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary, #1a3a5f);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1010;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary, #0077b6);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive styles for PPT viewer */
+        @media (max-width: 768px) {
+            .ppt-slide {
+                width: 95%;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ppt-slide {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Include header from template -->
+    {% include header.html %}
+    
+    <!-- Main content area -->
+    <main>
+        <!-- PPT Link Container -->
+        <div class="ppt-link-container">
+            <a class="ppt-link" id="open-ppt">
+                <i class="fas fa-file-powerpoint"></i>
+                View Course Presentation
+            </a>
+        </div>
+
+        <!-- Main content injected from individual pages -->
+        {{ content }}
+    </main>
 
     <!-- PPT Overlay -->
-    <div class="overlay" id="ppt-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; overflow-y: auto;">
-        <div class="ppt-viewer" style="background-color: transparent; border-radius: 0; overflow: visible; position: relative; box-shadow: none; padding: 0; width: 100%; max-width: 100%; height: auto; display: flex; flex-direction: column; align-items: center;">
-            <div class="ppt-header" style="display: none;"> <!-- Hidden Header -->
-                <h3 style="margin: 0; color: white; font-size: 1.25rem;">Presentation Slides</h3>
-                <button class="ppt-close" id="close-ppt" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; transition: var(--transition);">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="ppt-content" id="ppt-content-scroll" style="max-height: 90vh; overflow-y: auto; padding: 2rem 0; display: flex; flex-direction: column; align-items: center; width: 100%;">
+    <div class="overlay" id="ppt-overlay">
+        <div class="ppt-viewer">
+            <div class="ppt-content" id="ppt-content-scroll">
                 <div id="slide-container">
                     <!-- Slides will be rendered here -->
-                </div>
-                <div class="slide-controls" style="display: none;"> <!-- Hidden Controls -->
-                    <button class="slide-btn" id="prev-slide" style="background-color: var(--secondary); color: white; border: none; padding: 0.5rem 1rem; border-radius: var(--border-radius); cursor: pointer; transition: var(--transition);">
-                        <i class="fas fa-arrow-left"></i> Previous
-                    </button>
-                    <span class="slide-counter" id="slide-counter" style="font-weight: 500;">Slides</span>
-                    <button class="slide-btn" id="next-slide" style="background-color: var(--secondary); color: white; border: none; padding: 0.5rem 1rem; border-radius: var(--border-radius); cursor: pointer; transition: var(--transition);">
-                        Next <i class="fas fa-arrow-right"></i>
-                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="report-content">
-        {{ content }}  <!-- This is where your report content from Markdown will go -->
-    </div>
-</div>
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- Include footer from template -->
+    {% include footer.html %}
+    
+    <!-- Optional JavaScript from default template -->
+    <script src="/assets/js/main.js"></script>
+    
+    <!-- PPT viewer JavaScript -->
+    <script>
+        // ===== PRESENTATION SLIDES =====
+        // Path to slides.json file
+        const pptJsonPath = '/assets/img/reports/PPTs/Report 1 Ppts/slides.json'; // Replace with your actual path
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
+        // DOM Elements
         const openPptBtn = document.getElementById('open-ppt');
-        const closePptBtn = document.getElementById('close-ppt');
         const pptOverlay = document.getElementById('ppt-overlay');
         const slideContainer = document.getElementById('slide-container');
-        const slideCounter = document.getElementById('slide-counter');
+        const backToTopBtn = document.getElementById('back-to-top');
 
-        function renderAllSlides(slides) { // Function now takes slides array as argument
-            slideContainer.innerHTML = '';
-            slides.forEach(slide => {
-                const slideDiv = document.createElement('div');
-                slideDiv.classList.add('ppt-slide');
-                slideDiv.setAttribute('style', 'background-color: white; width: 90%; min-height: 500px; display: block; margin-bottom: 2rem; padding: 2rem; border: 1px solid var(--grey-medium); border-radius: var(--border-radius); box-shadow: var(--shadow);');
-                slideDiv.innerHTML = `
-                    <h2 style="color: var(--primary); margin-bottom: 1rem; text-align: center;">
-                        ${slide.title}
-                    </h2>
-                    <img src="${slide.image}" alt="${slide.title}" style="max-width: 100%; max-height: 80%; border: 1px solid #ddd; display: block; margin: 0 auto 1rem auto;" />
-                    <p style="margin-top: 1rem; text-align: center; font-size: 1.25rem;">
-                        ${slide.content}
-                    </p>
-                `;
-                slideContainer.appendChild(slideDiv);
-            });
-            slideCounter.textContent = `${slides.length} Slides`;
-        }
-
+        // Event Listeners
         openPptBtn.addEventListener('click', () => {
             pptOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            loadAndRenderSlides(); // Call function to load and render slides
+        });
 
-            // **Fetch slides.json based on frontmatter data**
-            const pptJsonPath = "{{ page.ppt_json_path }}"; // Get path from frontmatter
+        // Close overlay when clicking the overlay background
+        pptOverlay.addEventListener('click', (e) => {
+            if (e.target === pptOverlay || e.target.classList.contains('ppt-viewer') || e.target.classList.contains('ppt-content')) {
+                pptOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!pptOverlay.classList.contains('active')) return;
+
+            if (e.key === 'Escape') {
+                pptOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Back to top button visibility
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Function to render all slides
+        function renderAllSlides(slides) {
+            slideContainer.innerHTML = '';
+            slides.forEach((imagePath, index) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.classList.add('ppt-slide');
+                slideDiv.innerHTML = `
+                    <img src="${imagePath}" alt="Slide ${index + 1}" />
+                `;
+                slideContainer.appendChild(slideDiv);
+            });
+        }
+
+        // Function to load and render slides from JSON
+        function loadAndRenderSlides() {
             if (pptJsonPath) {
                 fetch(pptJsonPath)
                     .then(response => response.json())
@@ -92,29 +288,10 @@ layout: default  # Inherits from your default layout (e.g., header, footer)
                         slideContainer.innerHTML = "<p>Failed to load presentation slides.</p>"; // Display error message
                     });
             } else {
-                console.error("ppt_json_path not defined in frontmatter.");
+                console.error("pptJsonPath is not defined. Set it in the script.");
                 slideContainer.innerHTML = "<p>Presentation path not configured.</p>"; // Display config error
             }
-        });
-
-        closePptBtn.addEventListener('click', () => {
-            pptOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        pptOverlay.addEventListener('click', (e) => {
-            if (e.target === pptOverlay) {
-                pptOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (!pptOverlay.classList.contains('active')) return;
-            if (e.key === 'Escape') {
-                pptOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    });
-</script>
+        }
+    </script>
+</body>
+</html>
