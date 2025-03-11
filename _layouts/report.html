@@ -1,20 +1,46 @@
----
-layout: default
----
-<!-- Report Layout builds on default but adds PPT specific features -->
-{% if page.ppt_enabled %}
-    {% include ppt-card-overlay.html %}
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <!-- Link to main CSS file with relative_url filter -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Include header -->
+    {% include header.html %}
 
-<div class="report-container">
-    <h1>{{ page.title }}</h1>
-    
-    {{ content }}
-</div>
+    <!-- Main content -->
+    <main>
+        <!-- Conditionally include PPT Component based on frontmatter -->
+        {% if page.ppt_enabled %}
+            {% include ppt-card-overlay.html %}
+        {% endif %}
 
-{% if page.ppt_enabled %}
-<script>
-    // Define pptJsonPath here, dynamically based on frontmatter
-    const pptJsonPath = '{{ page.ppt_json_path }}';
-</script>
-{% endif %}
+        <!-- Main content injected from individual pages -->
+        {{ content }}
+    </main>
+
+    <!-- Include footer -->
+    {% include footer.html %}
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Optional JavaScript from default.html (if you have it) -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+    <!-- Script to define pptJsonPath dynamically - Place AFTER including ppt-card-overlay.html -->
+    {% if page.ppt_enabled %}
+    <script>
+        // Define pptJsonPath here, dynamically based on frontmatter
+        const pptJsonPath = '{{ page.ppt_json_path | relative_url }}';
+    </script>
+    {% endif %}
+
+</body>
+</html>
