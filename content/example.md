@@ -1,5 +1,5 @@
 ---
-layout: report
+layout: default
 title: Your Report Title
 ppt_enabled: true
 ppt_json_path: "/assets/img/reports/PPTs/Report-1-Ppts/slides.json"  
