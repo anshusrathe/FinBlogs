@@ -1,7 +1,7 @@
 ---
 layout: default
 title: International Financial Management
-ppt_json_path: /assets/img/reports/PPTs/Report 1 Ppts/slides.json
+ppt_json_path: /assets/img/reports/PPTs/Report-1-Ppts/slides.json
 ---
 
 # Unit 1
