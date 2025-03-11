@@ -1,631 +1,86 @@
---- START OF FILE report.html ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale: 1.0">
-    <title>Course Layout Template</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Import fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+---
+layout: default  # Inherits from your default layout (e.g., header, footer)
+---
 
-        :root {
-            --primary: #1a3a5f;
-            --secondary: #0077b6;
-            --accent: #00a8e8;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #198754;
-            --grey-light: #e9ecef;
-            --grey-medium: #adb5bd;
-            --border-radius: 8px;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--grey-light);
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-badge {
-            background-color: var(--primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Merriweather', Georgia, serif;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            position: relative;
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        h1::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 4px;
-            width: 60px;
-            background-color: var(--accent);
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--grey-light);
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            color: var(--secondary);
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-        }
-
-        ul, ol {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        strong, b {
-            font-weight: 600;
-        }
-
-        em, i {
-            font-style: italic;
-        }
-
-        .unit-container {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .unit-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .unit-number {
-            background-color: var(--primary);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.25rem;
-        }
-
-        .unit-title {
-            font-size: 1.75rem;
-            margin-bottom: 0;
-        }
-
-        .concept-box {
-            background-color: var(--grey-light);
-            border-left: 4px solid var(--secondary);
-            padding: 1.5rem;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            margin-bottom: 2rem;
-        }
-
-        .concept-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
-        }
-
-        .fundamentals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .fundamental-item {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            border-top: 3px solid var(--accent);
-            transition: var(--transition);
-        }
-
-        .fundamental-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .fundamental-title {
-            font-weight: 600;
-            color: var(--secondary);
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .fundamental-title i {
-            color: var(--accent);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 1rem;
-            text-align: left;
-        }
-
-        th {
-            background-color: var(--primary);
-            color: white;
-            font-weight: 500;
-        }
-
-        tr:nth-child(even) {
-            background-color: var(--grey-light);
-        }
-
-        tr:nth-child(odd) {
-            background-color: white;
-        }
-
-        td {
-            border-bottom: 1px solid var(--grey-light);
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        .info-callout {
-            background-color: #e3f2fd;
-            border-left: 4px solid #2196f3;
-            padding: 1.5rem;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            margin-bottom: 2rem;
-        }
-
-        .warning-callout {
-            background-color: #fff8e1;
-            border-left: 4px solid #ffc107;
-            padding: 1.5rem;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            margin-bottom: 2rem;
-        }
-
-        .conclusion {
-            font-weight: 600;
-            margin-top: 2rem;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            background-color: #f1f8e9;
-            border-left: 4px solid #8bc34a;
-        }
-
-        /* PPT Link Styles */
-        .ppt-link-container {
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .ppt-link {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--secondary);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            cursor: pointer;
-        }
-
-        .ppt-link:hover {
-            background-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .ppt-link i {
-            margin-right: 0.75rem;
-            font-size: 1.25rem;
-        }
-
-        /* PPT Overlay Styles */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            overflow-y: auto;
-            padding-top: 3rem;
-            /* Hide scrollbar for WebKit browsers */
-            &::-webkit-scrollbar {
-                width: 0;
-                background: transparent;
-            }
-            /* Hide scrollbar for Firefox */
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .ppt-viewer {
-            background-color: transparent;
-            border-radius: 0;
-            overflow: visible;
-            position: relative;
-            box-shadow: none;
-            padding: 0;
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .ppt-content {
-            max-height: none;
-            overflow-y: visible;
-            padding: 2rem 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        .ppt-slide {
-            background-color: white;
-            width: 95%;
-            max-width: 1000px; /* Increased size */
-            display: block;
-            margin-bottom: 3rem; /* Added more space between slides */
-            padding: 3rem; /* Increased padding */
-            border: 1px solid var(--grey-medium);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            font-size: 1.2rem; /* Slightly increased font size */
-        }
-
-        .ppt-slide img {
-            max-width: 100%;
-            max-height: 80%;
-            border: 1px solid #ddd;
-            display: block;
-            margin: 0 auto 1.5rem auto;
-        }
-
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--primary);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: none;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: var(--transition);
-            z-index: 1010;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .back-to-top.visible {
-            display: flex;
-        }
-
-        .back-to-top:hover {
-            background-color: var(--secondary);
-            transform: translateY(-5px);
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.75rem;
-            }
-
-            .unit-container {
-                padding: 1.5rem;
-            }
-
-            .fundamentals-grid {
-                grid-template-columns: 1fr;
-            }
-
-            table {
-                display: block;
-                overflow-x: auto;
-            }
-
-            .ppt-slide {
-                width: 95%;
-                padding: 2rem;
-                margin-bottom: 2rem;
-                font-size: 1rem;
-            }
-
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .header-right {
-                margin-top: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .unit-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .unit-title {
-                font-size: 1.5rem;
-            }
-
-            .ppt-slide {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Add your custom colors and styles here */
-    </style>
-</head>
-<body>
-    <header>
-        <a href="#" class="logo">Course Title</a>
-        <div class="header-right">
-            <div class="header-badge">Course Template</div>
-        </div>
-    </header>
+<div class="unit-container">  <!-- You can keep this if you like the container style -->
+    <div class="unit-header">
+        <div class="unit-number">Presentation</div> <!-- You can customize this -->
+        <h1 class="unit-title">Course Presentation</h1> <!-- Customize this title -->
+    </div>
 
     <!-- PPT Link Container -->
-    <div class="ppt-link-container">
-        <a class="ppt-link" id="open-ppt">
-            <i class="fas fa-file-powerpoint"></i>
-            View Course Presentation
+    <div class="ppt-link-container" style="text-align: center; margin-bottom: 2rem;"> <!-- Added inline style for center alignment -->
+        <a class="ppt-link" id="open-ppt" style="display: inline-flex; align-items: center; background-color: var(--secondary); color: white; padding: 1rem 1.5rem; border-radius: var(--border-radius); text-decoration: none; font-weight: 500; transition: var(--transition); box-shadow: var(--shadow); cursor: pointer;">
+            <i class="fas fa-file-powerpoint" style="margin-right: 0.75rem; font-size: 1.25rem;"></i>
+            View Presentation Slides
         </a>
     </div>
 
     <!-- PPT Overlay -->
-    <div class="overlay" id="ppt-overlay">
-        <div class="ppt-viewer">
-            <div class="ppt-content" id="ppt-content-scroll">
+    <div class="overlay" id="ppt-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; overflow-y: auto;">
+        <div class="ppt-viewer" style="background-color: transparent; border-radius: 0; overflow: visible; position: relative; box-shadow: none; padding: 0; width: 100%; max-width: 100%; height: auto; display: flex; flex-direction: column; align-items: center;">
+            <div class="ppt-header" style="display: none;"> <!-- Hidden Header -->
+                <h3 style="margin: 0; color: white; font-size: 1.25rem;">Presentation Slides</h3>
+                <button class="ppt-close" id="close-ppt" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; transition: var(--transition);">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="ppt-content" id="ppt-content-scroll" style="max-height: 90vh; overflow-y: auto; padding: 2rem 0; display: flex; flex-direction: column; align-items: center; width: 100%;">
                 <div id="slide-container">
                     <!-- Slides will be rendered here -->
                 </div>
+                <div class="slide-controls" style="display: none;"> <!-- Hidden Controls -->
+                    <button class="slide-btn" id="prev-slide" style="background-color: var(--secondary); color: white; border: none; padding: 0.5rem 1rem; border-radius: var(--border-radius); cursor: pointer; transition: var(--transition);">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <span class="slide-counter" id="slide-counter" style="font-weight: 500;">Slides</span>
+                    <button class="slide-btn" id="next-slide" style="background-color: var(--secondary); color: white; border: none; padding: 0.5rem 1rem; border-radius: var(--border-radius); cursor: pointer; transition: var(--transition);">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Back to top button -->
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Main content -->
-    <div class="unit-container">
-        <div class="unit-header">
-            <div class="unit-number">1</div>
-            <h1 class="unit-title">Your Course Title Here</h1>
-        </div>
-
-        <!-- Your course content goes here -->
-        <p>Replace this with your course content.</p>
-
-        <!-- Example components you can use -->
-        <div class="info-callout">
-            <h3>Information Box</h3>
-            <p>Use this for important information.</p>
-        </div>
-
-        <div class="concept-box">
-            <div class="concept-title">Key Concept</div>
-            <p>Explain important concepts here.</p>
-        </div>
-
-        <h2>Section Title</h2>
-        <p>Section content goes here.</p>
-
-        <div class="fundamentals-grid">
-            <div class="fundamental-item">
-                <div class="fundamental-title">
-                    <i class="fas fa-chart-line"></i> Item 1
-                </div>
-                <p>Description for item 1.</p>
-            </div>
-            <div class="fundamental-item">
-                <div class="fundamental-title">
-                    <i class="fas fa-globe"></i> Item 2
-                </div>
-                <p>Description for item 2.</p>
-            </div>
-            <div class="fundamental-item">
-                <div class="fundamental-title">
-                    <i class="fas fa-money-bill-wave"></i> Item 3
-                </div>
-                <p>Description for item 3.</p>
-            </div>
-        </div>
-
-        <div class="conclusion">
-            Conclusion text goes here.
-        </div>
+    <div id="report-content">
+        {{ content }}  <!-- This is where your report content from Markdown will go -->
     </div>
+</div>
 
-    <script>
-        // ===== PRESENTATION SLIDES =====
-        // **IMPORTANT:** Set the path to your slides.json file here!
-        const pptJsonPath = '/assets/img/reports/PPTs/Report 1 Ppts/slides.json'; // Replace with your actual path
-
-        // DOM Elements
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
         const openPptBtn = document.getElementById('open-ppt');
+        const closePptBtn = document.getElementById('close-ppt');
         const pptOverlay = document.getElementById('ppt-overlay');
         const slideContainer = document.getElementById('slide-container');
-        const backToTopBtn = document.getElementById('back-to-top');
+        const slideCounter = document.getElementById('slide-counter');
 
-        // Event Listeners
-        openPptBtn.addEventListener('click', () => {
-            pptOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            loadAndRenderSlides(); // Call function to load and render slides
-        });
-
-        // Close overlay when clicking the overlay background
-        pptOverlay.addEventListener('click', (e) => {
-            if (e.target === pptOverlay || e.target.classList.contains('ppt-viewer') || e.target.classList.contains('ppt-content')) {
-                pptOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (!pptOverlay.classList.contains('active')) return;
-
-            if (e.key === 'Escape') {
-                pptOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Back to top button visibility
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        });
-
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Function to render all slides (same as before)
-        function renderAllSlides(slides) {
+        function renderAllSlides(slides) { // Function now takes slides array as argument
             slideContainer.innerHTML = '';
-            slides.forEach((imagePath, index) => { // 'slide' is now imagePath, index is the slide index
+            slides.forEach(slide => {
                 const slideDiv = document.createElement('div');
                 slideDiv.classList.add('ppt-slide');
                 slideDiv.setAttribute('style', 'background-color: white; width: 90%; min-height: 500px; display: block; margin-bottom: 2rem; padding: 2rem; border: 1px solid var(--grey-medium); border-radius: var(--border-radius); box-shadow: var(--shadow);');
                 slideDiv.innerHTML = `
-                    <img src="${imagePath}" alt="Slide ${index + 1}" style="max-width: 100%; max-height: 80%; border: 1px solid #ddd; display: block; margin: 0 auto 1rem auto;" />
-                `; // Only image is displayed now
+                    <h2 style="color: var(--primary); margin-bottom: 1rem; text-align: center;">
+                        ${slide.title}
+                    </h2>
+                    <img src="${slide.image}" alt="${slide.title}" style="max-width: 100%; max-height: 80%; border: 1px solid #ddd; display: block; margin: 0 auto 1rem auto;" />
+                    <p style="margin-top: 1rem; text-align: center; font-size: 1.25rem;">
+                        ${slide.content}
+                    </p>
+                `;
                 slideContainer.appendChild(slideDiv);
             });
             slideCounter.textContent = `${slides.length} Slides`;
         }
 
-        // **New function to load and render slides from JSON**
-        function loadAndRenderSlides() {
+        openPptBtn.addEventListener('click', () => {
+            pptOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // **Fetch slides.json based on frontmatter data**
+            const pptJsonPath = "{{ page.ppt_json_path }}"; // Get path from frontmatter
             if (pptJsonPath) {
                 fetch(pptJsonPath)
                     .then(response => response.json())
@@ -637,31 +92,29 @@
                         slideContainer.innerHTML = "<p>Failed to load presentation slides.</p>"; // Display error message
                     });
             } else {
-                console.error("pptJsonPath is not defined. Set it in the script.");
+                console.error("ppt_json_path not defined in frontmatter.");
                 slideContainer.innerHTML = "<p>Presentation path not configured.</p>"; // Display config error
             }
-        }
+        });
 
-        // **Example: You can still set custom slides directly if needed (but now JSON is the primary way)**
-        /*
-        function setCustomSlides(customSlides) {
-            slides.length = 0; // Clear any existing slides (if you had a default slides array)
-            customSlides.forEach(slide => {
-                slides.push(slide);
-            });
-            renderAllSlides(slides); // Re-render with the custom slides
-        }
+        closePptBtn.addEventListener('click', () => {
+            pptOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
 
-        setCustomSlides([
-            {
-                title: "Custom Title",
-                content: "Custom content",
-                image: "/api/placeholder/800/600" // Replace with your image path
-            },
-            // Add more slides as needed
-        ]);
-        */
-    </script>
-</body>
-</html>
---- END OF FILE report.html ---
+        pptOverlay.addEventListener('click', (e) => {
+            if (e.target === pptOverlay) {
+                pptOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!pptOverlay.classList.contains('active')) return;
+            if (e.key === 'Escape') {
+                pptOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+</script>
