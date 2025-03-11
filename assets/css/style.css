@@ -741,3 +741,131 @@ footer {
 .slide-up {
     animation: slideInUp 0.5s ease-out;
 }
+
+/* PPT Specific Styles (add these specifically) */
+.ppt-link-container {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.ppt-link {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--secondary);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+
+.ppt-link:hover {
+    background-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ppt-link i {
+    margin-right: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ppt-viewer {
+    background-color: transparent;
+    border-radius: 0;
+    overflow: visible;
+    position: relative;
+    box-shadow: none;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ppt-header {
+    display: none;
+}
+
+.ppt-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.ppt-close:hover {
+    transform: scale(1.1);
+}
+
+.ppt-content {
+    max-height: none;
+    overflow-y: visible;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.ppt-slide {
+    background-color: white;
+    width: 90%;
+    min-height: 500px; /* Increased min-height */
+    display: block;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border: 1px solid var(--grey-medium);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.ppt-slide img {
+    max-width: 100%;
+    max-height: 80%;
+    border: 1px solid #ddd;
+    display: block;
+    margin: 0 auto 1rem auto;
+}
+
+.slide-controls {
+    display: none;
+}
