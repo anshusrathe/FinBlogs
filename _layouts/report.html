@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +8,13 @@
     <title>{{ page.title }}</title>
     <!-- Link to main CSS file -->
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Include header from template -->
+    <!-- Include header -->
     {% include header.html %}
     
-    <!-- Main content area -->
+    <!-- Main content -->
     <main>
         <!-- PPT Link Container -->
         <div class="ppt-link-container">
@@ -23,9 +26,11 @@
 
         <!-- Main content injected from individual pages -->
         {{ content }}
-        
     </main>
-
+    
+    <!-- Include footer -->
+    {% include footer.html %}
+    
     <!-- PPT Overlay -->
     <div class="overlay" id="ppt-overlay">
         <div class="ppt-viewer">
@@ -41,18 +46,15 @@
     <button class="back-to-top" id="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
-    
-    <!-- Include footer from template -->
-    {% include footer.html %}
-    
-    <!-- Optional JavaScript from default template -->
+
+    <!-- Optional JavaScript from default.html -->
     <script src="/assets/js/main.js"></script>
     
-    <!-- PPT viewer JavaScript -->
+    <!-- PPT Viewer Script -->
     <script>
         // ===== PRESENTATION SLIDES =====
-        // Path to slides.json file
-        const pptJsonPath = '/assets/img/reports/PPTs/Report-1-Ppts/slides.json'; // Replace with your actual path
+        // **IMPORTANT:** Set the path to your slides.json file here!
+        const pptJsonPath = '/assets/img/reports/PPTs/Report 1 Ppts/slides.json'; // Replace with your actual path
 
         // DOM Elements
         const openPptBtn = document.getElementById('open-ppt');
