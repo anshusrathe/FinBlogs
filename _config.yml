@@ -1,0 +1,25 @@
+# Site settings
+title: Your Site Title
+description: Your site description
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Default front matter settings
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default" # this will be the default layout
+
+# Exclude from processing
+exclude:
+  - .github/
+  - README.md
+  - LICENSE

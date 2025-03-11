@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<!-- Report Layout builds on default but adds PPT specific features -->
+{% if page.ppt_enabled %}
+    {% include ppt-card-overlay.html %}
+{% endif %}
+
+<div class="report-container">
+    <h1>{{ page.title }}</h1>
+    
+    {{ content }}
+</div>
+
+{% if page.ppt_enabled %}
+<script>
+    // Define pptJsonPath here, dynamically based on frontmatter
+    const pptJsonPath = '{{ page.ppt_json_path }}';
+</script>
+{% endif %}
