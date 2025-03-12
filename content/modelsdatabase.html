@@ -449,7 +449,7 @@
             // Function to fetch and populate the Models Cards from reports.json
             async function loadModels() {
                 try {
-                    const response = await fetch('/content/reports/reports.json', { headers: { 'Accept': 'application/json' } });
+                    const response = await fetch('reports/reports.json', { headers: { 'Accept': 'application/json' } });
                     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                     const models = await response.json();
                     allModels = models.filter(model => model.type && model.type.trim() !== "");
