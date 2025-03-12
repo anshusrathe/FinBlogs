@@ -525,40 +525,41 @@
             }
           }
     
-          // Function to fetch and populate the Models Cards from models.json
-          async function loadModels() {
+          // Function to fetch and populate the Models Cards from reports.json
+            async function loadModels() {
             try {
-              const response = await fetch('content/reports/reports.json', { headers: { 'Accept': 'application/json' } });
-              if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-              const models = await response.json();
-              console.log("All models:", models); // Debug log
-                // Only include models with an empty "type" (after trimming any whitespace)
-                const filteredModels = models.filter(model => model.type.trim() === "");
-                console.log("Filtered models:", filteredModels); // Debug log to verify the filter
+                const response = await fetch('content/reports/reports.json', { headers: { 'Accept': 'application/json' } });
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const models = await response.json();
                 const cardsContainer = document.getElementById('models-data');
-              cardsContainer.innerHTML = '';
-              models.forEach(model => {
+                cardsContainer.innerHTML = '';
+                models.forEach(model => {
+                // Only create a card if model.type is exactly an empty string.
+                if (model.type && model.type.trim() !== "") {
+                    return; // Skip this object if it has a non-empty type
+                }
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = `
-                  <div class="card-header">
+                    <div class="card-header">
                     <span class="category">${model.category}</span>
                     <span class="date">${model.date}</span>
-                  </div>
-                  <div class="card-body">
+                    </div>
+                    <div class="card-body">
                     <h3><a href="${model.link}">${model.title}</a></h3>
                     <p>${model.summary}</p>
-                  </div>
-                  <div class="card-footer">
+                    </div>
+                    <div class="card-footer">
                     <a href="${model.link}" class="btn btn-outline">Read Full Report</a>
-                  </div>
+                    </div>
                 `;
                 cardsContainer.appendChild(card);
-              });
+                });
             } catch (error) {
-              console.error('Error fetching models:', error);
+                console.error('Error fetching models:', error);
             }
-          }
+            }
+
     
           // Call both functions to load data
           loadReports();
