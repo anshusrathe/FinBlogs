@@ -100,6 +100,18 @@
                 top: 20px;
                 right: 20px;
             }
+
+            nav {
+                margin-top: 20px;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+                }
+
+                nav.active {
+                max-height: 300px; /* Adjust this value as needed */
+                }
         }
     </style>
 </head>
