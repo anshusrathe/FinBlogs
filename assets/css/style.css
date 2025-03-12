@@ -986,3 +986,53 @@ footer {
     overflow-x: hidden;
   }
 }
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    header .container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    nav {
+      margin-top: 20px;
+      width: 100%;
+      /* Added mobile collapse functionality */
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out;
+    }
+    
+    nav.active {
+      max-height: 300px; /* Adjust this value as needed */
+    }
+    
+    nav ul {
+      flex-direction: column;
+    }
+    
+    nav li {
+      margin: 10px 0;
+      margin-left: 0;
+    }
+    
+    .mobile-nav-toggle {
+      display: block;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    
+    .newsletter-form {
+      flex-direction: column;
+    }
+    
+    .newsletter-form input {
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    
+    .newsletter-form button {
+      border-radius: 4px;
+    }
+  }
