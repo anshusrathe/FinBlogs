@@ -70,7 +70,8 @@ def create_reports_json():
                     "date": frontmatter.get("date", ""),
                     "category": frontmatter.get("category", ""),
                     "summary": frontmatter.get("summary", ""),
-                    "link": link
+                    "link": link,
+                    "type": frontmatter.get("type", ""),
                 }
                 
                 reports_data.append(extracted_data)

@@ -5,7 +5,8 @@
     "date": "2025-03-11",
     "category": "example report",
     "summary": "thanking god that it worked",
-    "link": "/FinBlogs/content/reports/example"
+    "link": "/FinBlogs/content/reports/example",
+    "type": ""
   },
   {
     "file": "inpsy.md",
@@ -13,7 +14,8 @@
     "date": "2025-03-11",
     "category": "again check",
     "summary": "thanking god that it worked againnnnnn",
-    "link": "/FinBlogs/content/reports/inpsy"
+    "link": "/FinBlogs/content/reports/inpsy",
+    "type": "researchreport"
   },
   {
     "file": "project_1.md",
@@ -21,6 +23,7 @@
     "date": "2025-03-11",
     "category": "IFM REPORT",
     "summary": "Didn't expected this to be this smooth",
-    "link": "/FinBlogs/content/reports/project_1"
+    "link": "/FinBlogs/content/reports/project_1",
+    "type": ""
   }
 ]
