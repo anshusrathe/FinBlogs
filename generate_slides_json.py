@@ -25,7 +25,7 @@ def generate_slides_json(ppts_folder="assets/img/reports/PPTs", output_folder="a
         slides_data = []
         for image_file in image_files:
             # Construct image path relative to /assets/img/reports/PPTs/Report X Ppts/
-            image_path = f"/assets/img/reports/PPTs/{report_folder_name}/{image_file}" # Adjust path if needed
+            image_path = f"/FinBlogs/assets/img/reports/PPTs/{report_folder_name}/{image_file}" # Adjust path if needed
             
             # Create object with image property instead of just the path
             slide_object = {"image": image_path}

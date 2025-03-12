@@ -35,13 +35,58 @@
     z-index: 2000;
     padding: 10px;
     line-height: 0.5;
-    position: fixed; /* Ensure it stays fixed on the viewport */
-    transition: none; /* Disable any transitions that might affect positioning */
 }
-
 
 .ppt-close-btn:hover {
     color: #ddd;
+}
+
+/* Increase the size of the slides */
+.ppt-slide img {
+    max-width: 90% !important; /* Increase from the inline style of 100% */
+    max-height: 85vh !important; /* Use viewport height for better scaling */
+}
+
+/* Ensure the slide container starts at the top */
+#ppt-content-scroll {
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+/* Make sure the overlay is properly positioned */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.overlay.active {
+    display: flex;
+}
+
+/* Style for the ppt viewer */
+.ppt-viewer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+/* Add spacing between slides */
+.ppt-slide {
+    margin-bottom: 2rem;
+    padding: 1rem;
 }
 </style>
 
@@ -53,6 +98,7 @@
         const pptOverlay = document.getElementById('ppt-overlay');
         const closeBtn = document.getElementById('ppt-close-btn');
         const slideContainer = document.getElementById('slide-container');
+        const contentScroll = document.getElementById('ppt-content-scroll');
         
         // Close overlay function
         function closeOverlay() {
@@ -104,10 +150,17 @@
                 const slideDiv = document.createElement('div');
                 slideDiv.classList.add('ppt-slide');
                 slideDiv.innerHTML = `
-                    <img src="${slide.image}" alt="${slide.title}" style="max-width: 100%; max-height: 80%; border: 1px solid #ddd; display: block; margin: 0 auto 1rem auto;" />
+                    <img src="${slide.image}" alt="${slide.title}" style="display: block; margin: 0 auto 1rem auto; border: 1px solid #ddd;" />
                 `;
                 slideContainer.appendChild(slideDiv);
             });
+            
+            // Ensure we start at the top of the content when opened
+            if (contentScroll) {
+                setTimeout(() => {
+                    contentScroll.scrollTop = 0;
+                }, 100);
+            }
         }
 
         // Function to load and render slides from JSON
@@ -115,7 +168,7 @@
             if (!slideContainer) return;
             
             // Check if pptJsonPath is defined
-            if (typeof pptJsonPath !== '') {
+            if (typeof pptJsonPath !== 'undefined' && pptJsonPath !== '') {
                 fetch(pptJsonPath)
                     .then(response => response.json())
                     .then(slidesData => {
