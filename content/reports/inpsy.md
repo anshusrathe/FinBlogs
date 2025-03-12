@@ -2,7 +2,7 @@
 layout: report
 title: Industrial Psychology
 ppt_enabled: true
-ppt_json_path: /assets/img/reports/PPTs/Report-1-Ppts/slides.json
+ppt_json_path: /assets/img/reports/PPTs/report-2-ppts/slides.json
 date: 2025-03-11
 category: again check
 summary: thanking god that it worked againnnnnn

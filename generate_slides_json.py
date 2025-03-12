@@ -26,13 +26,16 @@ def generate_slides_json(ppts_folder="assets/img/reports/PPTs", output_folder="a
         for image_file in image_files:
             # Construct image path relative to /assets/img/reports/PPTs/Report X Ppts/
             image_path = f"/assets/img/reports/PPTs/{report_folder_name}/{image_file}" # Adjust path if needed
-            slides_data.append(image_path) # Now just append the image path directly to the list
+            
+            # Create object with image property instead of just the path
+            slide_object = {"image": image_path}
+            slides_data.append(slide_object)
 
         if slides_data: # Only create json if slides are found
             json_filepath = os.path.join(output_folder, report_folder_name, "slides.json")
             os.makedirs(os.path.dirname(json_filepath), exist_ok=True) # Ensure directory exists
             with open(json_filepath, 'w') as f:
-                json.dump(slides_data, f, indent=4) # Dump the list of image paths directly
+                json.dump(slides_data, f, indent=4)
             print(f"Generated {json_filepath}")
         else:
             print(f"No images found in {report_folder_name}, slides.json not created.")

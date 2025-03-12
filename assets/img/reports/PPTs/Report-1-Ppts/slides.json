@@ -1,12 +1,8 @@
 [
     {
-        "title": "Slide 1",
-        "image": "/FinBlogs/assets/img/reports/PPTs/Report-1-Ppts/Slide1.PNG",
-        "content": "Description for Slide 1"
+        "image": "/assets/img/reports/PPTs/Report-1-Ppts/Slide1.PNG"
     },
     {
-        "title": "Slide 2",
-        "image": "/FinBlogs/assets/img/reports/PPTs/Report-1-Ppts/Slide2.PNG",
-        "content": "Description for Slide 2"
+        "image": "/assets/img/reports/PPTs/Report-1-Ppts/Slide2.PNG"
     }
 ]
