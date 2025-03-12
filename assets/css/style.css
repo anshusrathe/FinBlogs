@@ -916,7 +916,7 @@ footer {
     width: auto;
     max-width: 100%;
     height: auto;
-    max-height: 80vh; /* Use viewport height to better control the image size */
+    max-height: 80vh; /* Use viewport height for better scaling */
     border: 1px solid #ddd;
     display: block;
     margin: 0 auto 1rem;
@@ -977,5 +977,12 @@ footer {
   .container {
     max-width: 100%;
     padding: 0 15px; /* Adjust padding if needed */
+  }
+}
+
+/* Prevent horizontal overflow on mobile devices */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
   }
 }
