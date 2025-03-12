@@ -125,9 +125,14 @@
       background-color: #374151;
     }
     
-    /* Gap between hero buttons in desktop view */
-    .hero-content a.btn + a.btn {
-      margin-left: 20px;
+    .btn-outline {
+      border: 2px solid #1e3a8a;
+      color: #1e3a8a;
+    }
+    
+    .btn-outline:hover {
+      background-color: #1e3a8a;
+      color: white;
     }
     
     .section-header {
@@ -393,21 +398,6 @@
       
       .newsletter-form button {
         border-radius: 4px;
-      }
-      
-      /* Force hero buttons to be the same width, centered, stacked */
-      .hero-content a.btn {
-        display: block;
-        width: 100%;         /* Fill available width up to max-width */
-        max-width: 320px;    /* You can tweak this to 280px, 300px, etc. */
-        margin: 0 auto 15px; /* Center horizontally & add vertical gap */
-        text-align: center;  /* Center button text */
-        white-space: nowrap; /* Prevent text from wrapping */
-      }
-
-      /* Remove extra bottom margin from the last button */
-      .hero-content a.btn:last-child {
-        margin-bottom: 0;
       }
     }
   </style>
