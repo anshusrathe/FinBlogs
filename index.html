@@ -395,18 +395,19 @@
         border-radius: 4px;
       }
       
-      /* Mobile: Stack hero buttons with gap */
+      /* Force hero buttons to be the same width, centered, stacked */
       .hero-content a.btn {
         display: block;
-        width: 100%;
-        margin-bottom: 15px;
-        text-align: center;
+        width: 100%;         /* Fill available width up to max-width */
+        max-width: 320px;    /* You can tweak this to 280px, 300px, etc. */
+        margin: 0 auto 15px; /* Center horizontally & add vertical gap */
+        text-align: center;  /* Center button text */
+        white-space: nowrap; /* Prevent text from wrapping */
       }
+
+      /* Remove extra bottom margin from the last button */
       .hero-content a.btn:last-child {
-        display: block;
-        width:100%;
         margin-bottom: 0;
-        text-align: center;
       }
     }
   </style>
