@@ -9,7 +9,7 @@
 <!-- PPT Overlay -->
 <div class="overlay" id="ppt-overlay">
     <!-- Dedicated background layer to capture clicks -->
-    <div class="overlay-bg"></div>
+    <div class="overlay-bg" id="overlay-bg-close"></div>
     <div class="ppt-viewer">
         <div class="ppt-content" id="ppt-content-scroll">
             <div id="slide-container">
@@ -28,9 +28,17 @@
     const openPptBtn = document.getElementById('open-ppt');
     const pptOverlay = document.getElementById('ppt-overlay');
     const slideContainer = document.getElementById('slide-container');
-    const overlayBg = document.querySelector('.overlay-bg');
+    const overlayBg = document.getElementById('overlay-bg-close');
 
-    if (openPptBtn && pptOverlay && slideContainer && overlayBg) { // Check if elements exist before adding listeners
+    // Add the close overlay function for reuse
+    function closeOverlay() {
+        if (pptOverlay) {
+            pptOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (openPptBtn && pptOverlay && slideContainer) { // Check if elements exist before adding listeners
         // Open overlay and load slides
         openPptBtn.addEventListener('click', () => {
             pptOverlay.classList.add('active');
@@ -39,17 +47,18 @@
         });
 
         // Close overlay when clicking the dedicated background
-        overlayBg.addEventListener('click', () => {
-            pptOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+        if (overlayBg) {
+            overlayBg.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent event bubbling
+                closeOverlay();
+            });
+        }
 
         // Keyboard navigation (Escape key to close overlay)
         document.addEventListener('keydown', (e) => {
             if (!pptOverlay.classList.contains('active')) return;
             if (e.key === 'Escape') {
-                pptOverlay.classList.remove('active');
-                document.body.style.overflow = '';
+                closeOverlay();
             }
         });
 
