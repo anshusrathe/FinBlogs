@@ -10,110 +10,397 @@
     <style>
         /* Basic styling for preview purposes */
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin: 0;
-            padding: 0;
+          font-family: 'Roboto', sans-serif;
+          line-height: 1.6;
+          color: #333;
+          margin: 0;
+          padding: 0;
         }
         
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
         }
         
         header {
-            background-color: #1e3a8a;
-            color: white;
-            padding: 20px 0;
+          background-color: #1e3a8a;
+          color: white;
+          padding: 20px 0;
         }
         
         header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
         
         .logo a {
-            color: white;
-            text-decoration: none;
+          color: white;
+          text-decoration: none;
         }
         
         .logo h1 {
-            margin: 0;
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
+          margin: 0;
+          font-family: 'Playfair Display', serif;
+          font-size: 28px;
+        }
+        
+        nav {
+          /* Desktop view: navigation is visible */
         }
         
         nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
+          list-style: none;
+          display: flex;
+          margin: 0;
+          padding: 0;
         }
         
         nav li {
-            margin-left: 30px;
+          margin-left: 30px;
         }
         
         nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+          color: white;
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.3s;
         }
         
         nav a:hover {
-            color: #ddd;
+          color: #ddd;
         }
         
         .mobile-nav-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
+          display: none;
+          font-size: 24px;
+          cursor: pointer;
         }
         
-        @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            nav {
-                margin-top: 20px;
-                width: 100%;
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-            
-            nav li {
-                margin: 10px 0;
-                margin-left: 0;
-            }
-            
-            .mobile-nav-toggle {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-            }
-
-            nav {
-                margin-top: 20px;
-                width: 100%;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.5s ease-in-out;
-                }
-
-                nav.active {
-                max-height: 300px; /* Adjust this value as needed */
-                }
+        .hero {
+          background-color: #f0f9ff;
+          padding: 80px 0;
+          text-align: center;
         }
-    </style>
+        
+        .hero h1 {
+          font-family: 'Playfair Display', serif;
+          font-size: 42px;
+          margin-bottom: 20px;
+          color: #1e3a8a;
+        }
+        
+        .hero p {
+          font-size: 18px;
+          max-width: 800px;
+          margin: 0 auto 30px;
+          color: #4b5563;
+        }
+        
+        .btn {
+          display: inline-block;
+          padding: 12px 24px;
+          border-radius: 4px;
+          text-decoration: none;
+          font-weight: 500;
+          transition: all 0.3s;
+        }
+        
+        .btn-primary {
+          background-color: #1e3a8a;
+          color: white;
+        }
+        
+        .btn-primary:hover {
+          background-color: #1e40af;
+        }
+        
+        .btn-secondary {
+          background-color: #4b5563;
+          color: white;
+        }
+        
+        .btn-secondary:hover {
+          background-color: #374151;
+        }
+        
+        .btn-outline {
+          border: 2px solid #1e3a8a;
+          color: #1e3a8a;
+        }
+        
+        .btn-outline:hover {
+          background-color: #1e3a8a;
+          color: white;
+        }
+        
+        .section-header {
+          text-align: center;
+          margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+          font-family: 'Playfair Display', serif;
+          font-size: 36px;
+          color: #1e3a8a;
+          margin-bottom: 10px;
+        }
+        
+        .section-header p {
+          color: #6b7280;
+        }
+        
+        .reports-list {
+          padding: 80px 0;
+          background-color: white;
+        }
+        
+        .reports-table {
+          overflow-x: auto;
+        }
+        
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        
+        th, td {
+          padding: 16px;
+          text-align: left;
+          border-bottom: 1px solid #e5e7eb;
+        }
+        
+        th {
+          background-color: #f9fafb;
+          font-weight: 600;
+        }
+        
+        td a {
+          color: #1e3a8a;
+          text-decoration: none;
+          font-weight: 500;
+        }
+        
+        td a:hover {
+          text-decoration: underline;
+        }
+        
+        .featured-reports {
+          padding: 80px 0;
+          background-color: #f9fafb;
+        }
+        
+        .report-cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 30px;
+        }
+        
+        .card {
+          background-color: white;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+          padding: 16px;
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .category {
+          display: inline-block;
+          padding: 4px 8px;
+          background-color: #e1effe;
+          color: #1e40af;
+          border-radius: 4px;
+          font-size: 14px;
+        }
+        
+        .date {
+          color: #6b7280;
+          font-size: 14px;
+        }
+        
+        .card-body {
+          padding: 20px;
+        }
+        
+        .card-body h3 {
+          margin-top: 0;
+          font-size: 20px;
+        }
+        
+        .card-body h3 a {
+          color: #1e3a8a;
+          text-decoration: none;
+        }
+        
+        .card-body h3 a:hover {
+          text-decoration: underline;
+        }
+        
+        .card-footer {
+          padding: 16px 20px;
+          border-top: 1px solid #e5e7eb;
+          text-align: right;
+        }
+        
+        .newsletter {
+          background-color: #1e3a8a;
+          color: white;
+          padding: 60px 0;
+        }
+        
+        .newsletter-content {
+          max-width: 600px;
+          margin: 0 auto;
+          text-align: center;
+        }
+        
+        .newsletter-form {
+          display: flex;
+          margin-top: 20px;
+        }
+        
+        .newsletter-form input {
+          flex-grow: 1;
+          padding: 12px 16px;
+          border: none;
+          border-radius: 4px 0 0 4px;
+          font-size: 16px;
+        }
+        
+        .newsletter-form button {
+          border-radius: 0 4px 4px 0;
+          border: none;
+          cursor: pointer;
+        }
+        
+        footer {
+          background-color: #1f2937;
+          color: white;
+          padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 40px;
+          margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+          font-size: 18px;
+          margin-bottom: 20px;
+          font-weight: 500;
+        }
+        
+        .footer-section p {
+          color: #d1d5db;
+        }
+        
+        .social-links {
+          margin-top: 20px;
+        }
+        
+        .social-links a {
+          display: inline-block;
+          margin-right: 15px;
+          color: white;
+          font-size: 20px;
+        }
+        
+        .footer-section.links ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        
+        .footer-section.links li {
+          margin-bottom: 10px;
+        }
+        
+        .footer-section.links a {
+          color: #d1d5db;
+          text-decoration: none;
+        }
+        
+        .footer-section.links a:hover {
+          color: white;
+        }
+        
+        .disclaimer {
+          font-size: 14px;
+          margin-top: 20px;
+          font-style: italic;
+        }
+        
+        .footer-bottom {
+          text-align: center;
+          padding-top: 20px;
+          border-top: 1px solid #374151;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+          header .container {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          
+          nav {
+            margin-top: 20px;
+            width: 100%;
+            /* Added mobile collapse functionality */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+          }
+          
+          nav.active {
+            max-height: 300px; /* Adjust this value as needed */
+          }
+          
+          nav ul {
+            flex-direction: column;
+          }
+          
+          nav li {
+            margin: 10px 0;
+            margin-left: 0;
+          }
+          
+          .mobile-nav-toggle {
+            display: block;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+          }
+          
+          .newsletter-form {
+            flex-direction: column;
+          }
+          
+          .newsletter-form input {
+            border-radius: 4px;
+            margin-bottom: 10px;
+          }
+          
+          .newsletter-form button {
+            border-radius: 4px;
+          }
+        }
+      </style>
 </head>
 <body>
     <header>
@@ -126,9 +413,9 @@
             <nav>
                 <ul>
                     <li><a href="/FinBlogs/index.html">Home</a></li>
-                    <li><a href="#reports">Reports</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="/FinBlogs/content/reportsdatabase.html">Reports</a></li>
+                    <li><a href="/FinBlogs/content/modelsdatabase.html">Models</a></li>
+                    <li><a href="/FinBlogs/index.html#featured">Dashboards</a></li>
                 </ul>
             </nav>
             <div class="mobile-nav-toggle">
