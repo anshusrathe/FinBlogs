@@ -1,531 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Insights - Research Reports</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Basic styling for preview purposes */
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header {
-            background-color: #1e3a8a;
-            color: white;
-            padding: 20px 0;
-        }
-        
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .logo h1 {
-            margin: 0;
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        
-        nav li {
-            margin-left: 30px;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: #ddd;
-        }
-        
-        .mobile-nav-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        .hero {
-            background-color: #f0f9ff;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            margin-bottom: 20px;
-            color: #1e3a8a;
-        }
-        
-        .hero p {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            color: #4b5563;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            margin: 0 10px;
-        }
-        
-        .btn-primary {
-            background-color: #1e3a8a;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #1e40af;
-        }
-        
-        .btn-secondary {
-            background-color: #4b5563;
-            color: white;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #374151;
-        }
-        
-        .btn-outline {
-            border: 2px solid #1e3a8a;
-            color: #1e3a8a;
-        }
-        
-        .btn-outline:hover {
-            background-color: #1e3a8a;
-            color: white;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 36px;
-            color: #1e3a8a;
-            margin-bottom: 10px;
-        }
-        
-        .section-header p {
-            color: #6b7280;
-        }
-        
-        .reports-list {
-            padding: 80px 0;
-            background-color: white;
-        }
-        
-        .reports-table {
-            overflow-x: auto;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        th, td {
-            padding: 16px;
-            text-align: left;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        th {
-            background-color: #f9fafb;
-            font-weight: 600;
-        }
-        
-        td a {
-            color: #1e3a8a;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        td a:hover {
-            text-decoration: underline;
-        }
-        
-        .featured-reports {
-            padding: 80px 0;
-            background-color: #f9fafb;
-        }
-        
-        .report-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .card-header {
-            padding: 16px;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .category {
-            display: inline-block;
-            padding: 4px 8px;
-            background-color: #e1effe;
-            color: #1e40af;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        
-        .date {
-            color: #6b7280;
-            font-size: 14px;
-        }
-        
-        .card-body {
-            padding: 20px;
-        }
-        
-        .card-body h3 {
-            margin-top: 0;
-            font-size: 20px;
-        }
-        
-        .card-body h3 a {
-            color: #1e3a8a;
-            text-decoration: none;
-        }
-        
-        .card-body h3 a:hover {
-            text-decoration: underline;
-        }
-        
-        .card-footer {
-            padding: 16px 20px;
-            border-top: 1px solid #e5e7eb;
-            text-align: right;
-        }
-        
-        .newsletter {
-            background-color: #1e3a8a;
-            color: white;
-            padding: 60px 0;
-        }
-        
-        .newsletter-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .newsletter-form {
-            display: flex;
-            margin-top: 20px;
-        }
-        
-        .newsletter-form input {
-            flex-grow: 1;
-            padding: 12px 16px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            font-size: 16px;
-        }
-        
-        .newsletter-form button {
-            border-radius: 0 4px 4px 0;
-            border: none;
-            cursor: pointer;
-        }
-        
-        footer {
-            background-color: #1f2937;
-            color: white;
-            padding: 60px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-section h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-        
-        .footer-section p {
-            color: #d1d5db;
-        }
-        
-        .social-links {
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            margin-right: 15px;
-            color: white;
-            font-size: 20px;
-        }
-        
-        .footer-section.links ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-section.links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-section.links a {
-            color: #d1d5db;
-            text-decoration: none;
-        }
-        
-        .footer-section.links a:hover {
-            color: white;
-        }
-        
-        .disclaimer {
-            font-size: 14px;
-            margin-top: 20px;
-            font-style: italic;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #374151;
-        }
-        
-        .text-center {
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            nav {
-                margin-top: 20px;
-                width: 100%;
-                display: none;
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-            
-            nav li {
-                margin: 10px 0;
-                margin-left: 0;
-            }
-            
-            .mobile-nav-toggle {
-                display: block;
-                position: absolute;
-                top: 20px;
-                right: 20px;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .newsletter-form input {
-                border-radius: 4px;
-                margin-bottom: 10px;
-            }
-            
-            .newsletter-form button {
-                border-radius: 4px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Insights - Research Reports</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Basic styling for preview purposes */
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 20px 0;
+    }
+    
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    
+    .logo a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    .logo h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    
+    nav li {
+      margin-left: 30px;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: #ddd;
+    }
+    
+    .mobile-nav-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    .hero {
+      background-color: #f0f9ff;
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: #1e3a8a;
+    }
+    
+    .hero p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      color: #4b5563;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background-color: #1e3a8a;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: #1e40af;
+    }
+    
+    /* New secondary button for financial models */
+    .btn-secondary {
+      background-color: #3b82f6;
+      color: white;
+      margin-left: 10px;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #2563eb;
+    }
+    
+    .btn-outline {
+      border: 2px solid #1e3a8a;
+      color: #1e3a8a;
+    }
+    
+    .btn-outline:hover {
+      background-color: #1e3a8a;
+      color: white;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: #1e3a8a;
+      margin-bottom: 10px;
+    }
+    
+    .section-header p {
+      color: #6b7280;
+    }
+    
+    .reports-list {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .reports-table {
+      overflow-x: auto;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    th {
+      background-color: #f9fafb;
+      font-weight: 600;
+    }
+    
+    td a {
+      color: #1e3a8a;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    td a:hover {
+      text-decoration: underline;
+    }
+    
+    .featured-reports {
+      padding: 80px 0;
+      background-color: #f9fafb;
+    }
+    
+    .report-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header {
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .category {
+      display: inline-block;
+      padding: 4px 8px;
+      background-color: #e1effe;
+      color: #1e40af;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    .date {
+      color: #6b7280;
+      font-size: 14px;
+    }
+    
+    .card-body {
+      padding: 20px;
+    }
+    
+    .card-body h3 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+    
+    .card-body h3 a {
+      color: #1e3a8a;
+      text-decoration: none;
+    }
+    
+    .card-body h3 a:hover {
+      text-decoration: underline;
+    }
+    
+    .card-footer {
+      padding: 16px 20px;
+      border-top: 1px solid #e5e7eb;
+      text-align: right;
+    }
+    
+    .newsletter {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 60px 0;
+    }
+    
+    .newsletter-content {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      margin-top: 20px;
+    }
+    
+    .newsletter-form input {
+      flex-grow: 1;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 16px;
+    }
+    
+    .newsletter-form button {
+      border-radius: 0 4px 4px 0;
+      border: none;
+      cursor: pointer;
+    }
+    
+    footer {
+      background-color: #1f2937;
+      color: white;
+      padding: 60px 0 20px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-section h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    
+    .footer-section p {
+      color: #d1d5db;
+    }
+    
+    .social-links {
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: inline-block;
+      margin-right: 15px;
+      color: white;
+      font-size: 20px;
+    }
+    
+    .footer-section.links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-section.links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-section.links a {
+      color: #d1d5db;
+      text-decoration: none;
+    }
+    
+    .footer-section.links a:hover {
+      color: white;
+    }
+    
+    .disclaimer {
+      font-size: 14px;
+      margin-top: 20px;
+      font-style: italic;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #374151;
+    }
+    
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      /* Hide nav by default on mobile */
+      nav {
+        display: none;
+        width: 100%;
+      }
+      
+      /* Show nav when active */
+      nav.active {
+        display: block;
+      }
+      
+      nav ul {
+        flex-direction: column;
+      }
+      
+      nav li {
+        margin: 10px 0;
+        margin-left: 0;
+      }
+      
+      .mobile-nav-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-form input {
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+      
+      .newsletter-form button {
+        border-radius: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="/index.html">
-                    <h1>Ansh Usrathe</h1>
-                </a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="#reports">Reports</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="mobile-nav-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="/index.html">
+          <h1>Ansh Usrathe</h1>
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="#reports">Reports</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-nav-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Introduction -->
+    <section class="hero" id="intro">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Financial Research &amp; Analysis</h1>
+          <p>In-depth financial reports based on thorough market research and data analysis. Helping investors make informed decisions in today's complex financial landscape.</p>
+          <div class="hero-buttons">
+            <!-- Modified button text and new button added -->
+            <a href="#reports" class="btn btn-primary">Explore Reports &gt;</a>
+            <a href="#featured" class="btn btn-secondary">View Financial Models</a>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main>
-        <!-- Section 1: Introduction -->
-        <section class="hero" id="intro">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Financial Research & Analysis</h1>
-                    <p>In-depth financial reports based on thorough market research and data analysis. Helping investors make informed decisions in today's complex financial landscape.</p>
-                    <div>
-                        <a href="#reports" class="btn btn-primary">Explore Reports &gt;</a>
-                        <a href="#featured" class="btn btn-secondary">View Financial Models</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2: List of Reports -->
-        <section class="reports-list" id="reports">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Research Reports</h2>
-                    <p>A comprehensive collection of financial analyses</p>
-                </div>
-                <div class="reports-table">
-                    <table id="reports-table">
-                        <thead>
-                            <tr>
-                                <th>Report Title</th>
-                                <th>Date</th>
-                                <th>Category</th>
-                                <th>Summary</th>
-                            </tr>
-                        </thead>
-                        <tbody id="reports-table-body">
-                            <!-- Reports will be populated by JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
-                <div class="text-center">
-                    <a href="/Finblogs/content/reportsdatabase.html" class="btn btn-primary">View More Reports</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Cards View of Reports -->
-        <section class="featured-reports" id="featured">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Featured Analysis</h2>
-                    <p>Highlighted financial reports and market insights</p>
-                </div>
-                <div class="report-cards" id="model-cards">
-                    <!-- Models will be populated by JavaScript -->
-                </div>
-                <div class="text-center">
-                    <a href="/Finblogs/content/modelsdatabase.html" class="btn btn-primary">View More Models</a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section about">
-                    <h3>About Financial Insights</h3>
-                    <p>Independent financial research and analysis to help you make informed investment decisions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="/index.html">Home</a></li>
-                        <li><a href="#reports">Research Reports</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section contact">
-                    <h3>Contact</h3>
-                    <p><i class="fas fa-envelope"></i> contact@financialinsights.com</p>
-                    <p class="disclaimer">Disclaimer: The information provided on this site is for educational purposes only and should not be considered financial advice.</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Financial Insights. All rights reserved.</p>
-            </div>
+    <!-- Section 2: List of Reports -->
+    <section class="reports-list" id="reports">
+      <div class="container">
+        <div class="section-header">
+          <h2>Research Reports</h2>
+          <p>A comprehensive collection of financial analyses</p>
         </div>
-    </footer>
+        <div class="reports-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Report Title</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Summary</th>
+              </tr>
+            </thead>
+            <!-- The tbody is now dynamically populated using reports.json -->
+            <tbody id="reports-data"></tbody>
+          </table>
+        </div>
+        <!-- View More Reports button -->
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="Finblogs/content/reportsdatabase.html" class="btn btn-outline">View More Reports</a>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        // Simple JavaScript for mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-            const nav = document.querySelector('nav');
-            
-            mobileNavToggle.addEventListener('click', function() {
-                nav.classList.toggle('active');
-            });
-        });
-    </script>
+    <!-- Section 3: Cards View of Reports (Financial Models) -->
+    <section class="featured-reports" id="featured">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Analysis</h2>
+          <p>Highlighted financial reports and market insights</p>
+        </div>
+        <!-- Cards container now populated dynamically using models.json -->
+        <div class="report-cards" id="models-data"></div>
+        <!-- View More Models button -->
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="Finblogs/content/modelsdatabase.html" class="btn btn-outline">View More Models</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h3>About Financial Insights</h3>
+          <p>Independent financial research and analysis to help you make informed investment decisions.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="footer-section links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="#reports">Research Reports</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section contact">
+          <h3>Contact</h3>
+          <p><i class="fas fa-envelope"></i> contact@financialinsights.com</p>
+          <p class="disclaimer">Disclaimer: The information provided on this site is for educational purposes only and should not be considered financial advice.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Financial Insights. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile navigation toggle
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const nav = document.querySelector('nav');
+      mobileNavToggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+      });
+
+      // Populate Reports Table from reports.json
+      fetch('reports.json')
+        .then(response => response.json())
+        .then(data => {
+          const tbody = document.getElementById('reports-data');
+          tbody.innerHTML = '';
+          data.forEach(report => {
+            // Create table row for each report
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td><a href="${report.link}">${report.title}</a></td>
+              <td>${report.date}</td>
+              <td>${report.category}</td>
+              <td>${report.summary}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        })
+        .catch(error => console.error('Error loading reports:', error));
+
+      // Populate Models Cards from models.json
+      fetch('models.json')
+        .then(response => response.json())
+        .then(data => {
+          const cardsContainer = document.getElementById('models-data');
+          cardsContainer.innerHTML = '';
+          data.forEach(model => {
+            // Create card element for each model
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+              <div class="card-header">
+                <span class="category">${model.category}</span>
+                <span class="date">${model.date}</span>
+              </div>
+              <div class="card-body">
+                <h3><a href="${model.link}">${model.title}</a></h3>
+                <p>${model.summary}</p>
+              </div>
+              <div class="card-footer">
+                <a href="${model.link}" class="btn btn-outline">Read Full Report</a>
+              </div>
+            `;
+            cardsContainer.appendChild(card);
+          });
+        })
+        .catch(error => console.error('Error loading models:', error));
+    });
+  </script>
 </body>
 </html>
