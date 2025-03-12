@@ -1,12 +1,20 @@
 <header>
     <div class="container">
-        <h1 class="site-title">{{ site.title }}</h1>
+        <div class="logo">
+            <a href="/index.html">
+                <h1>Ansh Usrathe</h1>
+            </a>
+        </div>
         <nav>
             <ul>
-                <li><a href="{{ '/' | relative_url }}">Home</a></li>
-                <li><a href="{{ '/about/' | relative_url }}">About</a></li>
-                <!-- Add more navigation items as needed -->
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="#reports">Reports</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <div class="mobile-nav-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
     </div>
 </header>

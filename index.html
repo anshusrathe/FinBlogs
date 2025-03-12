@@ -531,8 +531,11 @@
               const response = await fetch('content/reports/reports.json', { headers: { 'Accept': 'application/json' } });
               if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
               const models = await response.json();
-              const filteredModels = models.filter(model => model.type === "");
-              const cardsContainer = document.getElementById('models-data');
+              console.log("All models:", models); // Debug log
+                // Only include models with an empty "type" (after trimming any whitespace)
+                const filteredModels = models.filter(model => model.type.trim() === "");
+                console.log("Filtered models:", filteredModels); // Debug log to verify the filter
+                const cardsContainer = document.getElementById('models-data');
               cardsContainer.innerHTML = '';
               models.forEach(model => {
                 const card = document.createElement('div');
