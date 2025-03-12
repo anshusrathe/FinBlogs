@@ -8,8 +8,10 @@
 
 <!-- PPT Overlay -->
 <div class="overlay" id="ppt-overlay">
+    <!-- Close button for better UX -->
+    <button class="ppt-close-btn" id="ppt-close-btn" aria-label="Close presentation">×</button>
     <!-- Dedicated background layer to capture clicks -->
-    <div class="overlay-bg" id="overlay-bg-close"></div>
+    <div class="overlay-bg"></div>
     <div class="ppt-viewer">
         <div class="ppt-content" id="ppt-content-scroll">
             <div id="slide-container">
@@ -19,51 +21,81 @@
     </div>
 </div>
 
+<style>
+/* Add these styles to make sure the close button is visible and clickable */
+.ppt-close-btn {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2000;
+    padding: 10px;
+    line-height: 0.5;
+}
+
+.ppt-close-btn:hover {
+    color: #ddd;
+}
+</style>
+
 <script>
-    // ===== PRESENTATION SLIDES =====
-    // **IMPORTANT:** Set the pptJsonPath in the layout file where you include this component!
-    // const pptJsonPath = '/assets/img/reports/PPTs/Report-1-Ppts/slides.json'; // Path will be set dynamically in layout
-
-    // DOM Elements (scoped to this component)
-    const openPptBtn = document.getElementById('open-ppt');
-    const pptOverlay = document.getElementById('ppt-overlay');
-    const slideContainer = document.getElementById('slide-container');
-    const overlayBg = document.getElementById('overlay-bg-close');
-
-    // Add the close overlay function for reuse
-    function closeOverlay() {
-        if (pptOverlay) {
-            pptOverlay.classList.remove('active');
-            document.body.style.overflow = '';
+    document.addEventListener('DOMContentLoaded', function() {
+        // ===== PRESENTATION SLIDES =====
+        // DOM Elements
+        const openPptBtn = document.getElementById('open-ppt');
+        const pptOverlay = document.getElementById('ppt-overlay');
+        const closeBtn = document.getElementById('ppt-close-btn');
+        const slideContainer = document.getElementById('slide-container');
+        
+        // Close overlay function
+        function closeOverlay() {
+            if (pptOverlay) {
+                pptOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         }
-    }
-
-    if (openPptBtn && pptOverlay && slideContainer) { // Check if elements exist before adding listeners
-        // Open overlay and load slides
-        openPptBtn.addEventListener('click', () => {
-            pptOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            loadAndRenderSlides(); // Call function to load and render slides
-        });
-
-        // Close overlay when clicking the dedicated background
-        if (overlayBg) {
-            overlayBg.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent event bubbling
-                closeOverlay();
+        
+        // Open overlay when clicking the button
+        if (openPptBtn) {
+            openPptBtn.addEventListener('click', function() {
+                if (pptOverlay) {
+                    pptOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    loadAndRenderSlides();
+                }
             });
         }
-
-        // Keyboard navigation (Escape key to close overlay)
-        document.addEventListener('keydown', (e) => {
-            if (!pptOverlay.classList.contains('active')) return;
-            if (e.key === 'Escape') {
+        
+        // Close overlay with close button
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeOverlay);
+        }
+        
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && pptOverlay && pptOverlay.classList.contains('active')) {
                 closeOverlay();
             }
         });
-
+        
+        // Close when clicking outside the content area
+        if (pptOverlay) {
+            pptOverlay.addEventListener('click', function(e) {
+                // Close if clicking directly on the overlay, not on its children
+                if (e.target === pptOverlay || e.target.classList.contains('overlay-bg')) {
+                    closeOverlay();
+                }
+            });
+        }
+        
         // Function to render all slides
         function renderAllSlides(slides) {
+            if (!slideContainer) return;
+            
             slideContainer.innerHTML = '';
             slides.forEach(slide => {
                 const slideDiv = document.createElement('div');
@@ -83,23 +115,23 @@
 
         // Function to load and render slides from JSON
         function loadAndRenderSlides() {
-            // **IMPORTANT:** pptJsonPath is expected to be defined in the layout file
-            if (typeof pptJsonPath !== 'undefined') { // Check if pptJsonPath is defined
+            if (!slideContainer) return;
+            
+            // Check if pptJsonPath is defined
+            if (typeof pptJsonPath !== 'undefined') {
                 fetch(pptJsonPath)
                     .then(response => response.json())
                     .then(slidesData => {
-                        renderAllSlides(slidesData); // Render slides using fetched data
+                        renderAllSlides(slidesData);
                     })
                     .catch(error => {
                         console.error("Error fetching slides.json:", error);
-                        slideContainer.innerHTML = "<p>Failed to load presentation slides.</p>"; // Display error message
+                        slideContainer.innerHTML = "<p>Failed to load presentation slides.</p>";
                     });
             } else {
                 console.error("pptJsonPath is not defined. Set it in the layout file.");
-                slideContainer.innerHTML = "<p>Presentation path not configured.</p>"; // Display config error
+                slideContainer.innerHTML = "<p>Presentation path not configured.</p>";
             }
         }
-    } else {
-        console.error("PPT component DOM elements not found in ppt-card-overlay.html.");
-    }
+    });
 </script>
