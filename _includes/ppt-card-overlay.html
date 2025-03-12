@@ -104,13 +104,7 @@
                 const slideDiv = document.createElement('div');
                 slideDiv.classList.add('ppt-slide');
                 slideDiv.innerHTML = `
-                    <h2 style="color: var(--primary); margin-bottom: 1rem; text-align: center;">
-                        ${slide.title}
-                    </h2>
                     <img src="${slide.image}" alt="${slide.title}" style="max-width: 100%; max-height: 80%; border: 1px solid #ddd; display: block; margin: 0 auto 1rem auto;" />
-                    <p style="margin-top: 1rem; text-align: center; font-size: 1.25rem;">
-                        ${slide.content}
-                    </p>
                 `;
                 slideContainer.appendChild(slideDiv);
             });
