@@ -115,7 +115,7 @@
             if (!slideContainer) return;
             
             // Check if pptJsonPath is defined
-            if (typeof pptJsonPath !== 'undefined') {
+            if (typeof pptJsonPath !== '') {
                 fetch(pptJsonPath)
                     .then(response => response.json())
                     .then(slidesData => {
