@@ -3,6 +3,9 @@ layout: report
 title: Your Report Title
 ppt_enabled: true
 ppt_json_path: /assets/img/reports/PPTs/Report-1-Ppts/slides.json
+date: 2025-03-11
+category: example report
+summary: thanking god that it worked
 ---
 
 # My Markdown Content

@@ -1,0 +1,186 @@
+{
+  "main": {
+    "id": "4c16117500f89424",
+    "type": "split",
+    "children": [
+      {
+        "id": "854fd1601abc79fb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e088aeec5649ca14",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/reports/InPsy.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "InPsy"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "141714755cd45526",
+    "type": "split",
+    "children": [
+      {
+        "id": "4a72d3b4f3f5209e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9e52b2212ef0eeff",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "1c7d64ac46fcc652",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "12501e0dcfe95aa6",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6a90b61b76be39ae",
+    "type": "split",
+    "children": [
+      {
+        "id": "6d8c2d174ce132d9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "50ef81216e51380e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "content/reports/InPsy.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for InPsy"
+            }
+          },
+          {
+            "id": "f3c12658b51849d9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "content/reports/InPsy.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from InPsy"
+            }
+          },
+          {
+            "id": "096f21a142b51ac3",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "10fdb54c370b63f4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "content/reports/InPsy.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of InPsy"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "e088aeec5649ca14",
+  "lastOpenFiles": [
+    "content/modelsdatabase.html",
+    "content/reportsdatabase.html",
+    "content/reports/example.md",
+    "content/models/Project_1.md",
+    "content/reports/InPsy.md",
+    "content/models/models.json",
+    "update_models_json.py",
+    "content/models/update_models_json.py",
+    "update_reports_json.py",
+    "update_reports_json_monitor.py",
+    "content/reports/reports.json",
+    "content/reports/update_reports_json_monitor.py"
+  ]
+}

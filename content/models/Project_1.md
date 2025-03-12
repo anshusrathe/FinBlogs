@@ -1,6 +1,9 @@
 ---
-layout: default
+layout: report
 title: International Financial Management
+date: 2025-03-11
+category: IFM REPORT
+summary: Didn't expected this to be this smooth
 ---
 
 # Unit 1

@@ -101,6 +101,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
+            margin: 0 10px;
         }
         
         .btn-primary {
@@ -110,6 +111,15 @@
         
         .btn-primary:hover {
             background-color: #1e40af;
+        }
+        
+        .btn-secondary {
+            background-color: #4b5563;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #374151;
         }
         
         .btn-outline {
@@ -338,6 +348,11 @@
             border-top: 1px solid #374151;
         }
         
+        .text-center {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
         @media (max-width: 768px) {
             header .container {
                 flex-direction: column;
@@ -347,6 +362,11 @@
             nav {
                 margin-top: 20px;
                 width: 100%;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
             }
             
             nav ul {
@@ -409,7 +429,10 @@
                 <div class="hero-content">
                     <h1>Financial Research & Analysis</h1>
                     <p>In-depth financial reports based on thorough market research and data analysis. Helping investors make informed decisions in today's complex financial landscape.</p>
-                    <a href="#reports" class="btn btn-primary">View Latest Reports</a>
+                    <div>
+                        <a href="#reports" class="btn btn-primary">Explore Reports &gt;</a>
+                        <a href="#featured" class="btn btn-secondary">View Financial Models</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -422,7 +445,7 @@
                     <p>A comprehensive collection of financial analyses</p>
                 </div>
                 <div class="reports-table">
-                    <table>
+                    <table id="reports-table">
                         <thead>
                             <tr>
                                 <th>Report Title</th>
@@ -431,39 +454,13 @@
                                 <th>Summary</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td><a href="/reports/market-analysis-q1-2025.html">Market Analysis: Q1 2025</a></td>
-                                <td>March 5, 2025</td>
-                                <td>Market Analysis</td>
-                                <td>Comprehensive analysis of market trends and economic indicators for Q1 2025.</td>
-                            </tr>
-                            <tr>
-                                <td><a href="/reports/tech-sector-outlook-2025.html">Technology Sector Outlook 2025</a></td>
-                                <td>February 20, 2025</td>
-                                <td>Sector Analysis</td>
-                                <td>Detailed examination of technology sector performance and future projections.</td>
-                            </tr>
-                            <tr>
-                                <td><a href="/reports/esg-investing-guide.html">ESG Investing: A Comprehensive Guide</a></td>
-                                <td>February 12, 2025</td>
-                                <td>Investment Strategy</td>
-                                <td>A detailed guide to environmental, social, and governance investing strategies.</td>
-                            </tr>
-                            <tr>
-                                <td><a href="/reports/inflation-impact-2025.html">Inflation Impact on Investment Portfolios</a></td>
-                                <td>January 28, 2025</td>
-                                <td>Economic Analysis</td>
-                                <td>Analysis of how current inflation trends are affecting various investment portfolios.</td>
-                            </tr>
-                            <tr>
-                                <td><a href="/reports/emerging-markets-review.html">Emerging Markets: 2025 Review</a></td>
-                                <td>January 15, 2025</td>
-                                <td>Global Markets</td>
-                                <td>Comprehensive review of opportunities and risks in emerging markets.</td>
-                            </tr>
+                        <tbody id="reports-table-body">
+                            <!-- Reports will be populated by JavaScript -->
                         </tbody>
                     </table>
+                </div>
+                <div class="text-center">
+                    <a href="/Finblogs/content/reportsdatabase.html" class="btn btn-primary">View More Reports</a>
                 </div>
             </div>
         </section>
@@ -475,48 +472,11 @@
                     <h2>Featured Analysis</h2>
                     <p>Highlighted financial reports and market insights</p>
                 </div>
-                <div class="report-cards">
-                    <div class="card">
-                        <div class="card-header">
-                            <span class="category">Market Analysis</span>
-                            <span class="date">March 5, 2025</span>
-                        </div>
-                        <div class="card-body">
-                            <h3><a href="/reports/market-analysis-q1-2025.html">Market Analysis: Q1 2025</a></h3>
-                            <p>This comprehensive market analysis examines key economic indicators, sector performance, and provides actionable insights for investors navigating the current financial landscape.</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="/reports/market-analysis-q1-2025.html" class="btn btn-outline">Read Full Report</a>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <span class="category">Investment Strategy</span>
-                            <span class="date">February 12, 2025</span>
-                        </div>
-                        <div class="card-body">
-                            <h3><a href="/reports/esg-investing-guide.html">ESG Investing: A Comprehensive Guide</a></h3>
-                            <p>Explore the growing world of ESG investing with this detailed guide covering screening methodologies, performance metrics, and strategies for building a sustainable portfolio.</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="/reports/esg-investing-guide.html" class="btn btn-outline">Read Full Report</a>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <span class="category">Economic Analysis</span>
-                            <span class="date">January 28, 2025</span>
-                        </div>
-                        <div class="card-body">
-                            <h3><a href="/reports/inflation-impact-2025.html">Inflation Impact on Investment Portfolios</a></h3>
-                            <p>A detailed analysis of how current inflation trends are affecting various asset classes and investment strategies, with recommendations for portfolio adjustments.</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="/reports/inflation-impact-2025.html" class="btn btn-outline">Read Full Report</a>
-                        </div>
-                    </div>
+                <div class="report-cards" id="model-cards">
+                    <!-- Models will be populated by JavaScript -->
+                </div>
+                <div class="text-center">
+                    <a href="/Finblogs/content/modelsdatabase.html" class="btn btn-primary">View More Models</a>
                 </div>
             </div>
         </section>
