@@ -1036,3 +1036,45 @@ footer {
       border-radius: 4px;
     }
   }
+
+  .breadcrumb-container {
+    margin: 1rem 0;
+  }
+  
+  .breadcrumb {
+    list-style: none; /* remove default list bullets/numbers */
+    padding: 0;
+    margin: 0;
+    display: flex; /* show items in a row */
+    flex-wrap: wrap; /* wrap if needed on smaller screens */
+  }
+  
+  .breadcrumb-item {
+    margin-right: 0.5rem; /* space between items */
+    color: #4b5563;       /* text color, adjust as you wish */
+    font-size: 0.875rem;  /* slightly smaller text */
+  }
+  
+  .breadcrumb-item a {
+    text-decoration: none; 
+    color: #1e3a8a; /* link color (blue) to match your site’s palette */
+    transition: color 0.3s ease;
+  }
+  
+  .breadcrumb-item a:hover {
+    color: #374151; /* darker hover color */
+  }
+  
+  /* Separator between items (e.g., "Home > Reports") */
+  .breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    color: #adb5bd; /* separator color (light grey) */
+    margin-right: 0.5rem;
+  }
+  
+  /* Current page styling */
+  .breadcrumb-item.active {
+    font-weight: 600;
+    color: #1e3a8a;
+  }
+  
