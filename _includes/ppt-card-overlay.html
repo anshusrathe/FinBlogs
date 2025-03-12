@@ -37,11 +37,12 @@
 
         // Close overlay when clicking the overlay background
         pptOverlay.addEventListener('click', (e) => {
-            if (!e.target.closest('.ppt-viewer')) {  // if the click is not inside ppt-viewer
-                pptOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+        if (e.target === pptOverlay) {
+            pptOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
         });
+
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
