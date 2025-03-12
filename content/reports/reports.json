@@ -6,5 +6,21 @@
     "category": "example report",
     "summary": "thanking god that it worked",
     "link": "/FinBlogs/content/reports/example"
+  },
+  {
+    "file": "inpsy.md",
+    "title": "Industrial Psychology",
+    "date": "2025-03-11",
+    "category": "again check",
+    "summary": "thanking god that it worked againnnnnn",
+    "link": "/FinBlogs/content/reports/inpsy"
+  },
+  {
+    "file": "project_1.md",
+    "title": "International Financial Management",
+    "date": "2025-03-11",
+    "category": "IFM REPORT",
+    "summary": "Didn't expected this to be this smooth",
+    "link": "/FinBlogs/content/reports/project_1"
   }
 ]

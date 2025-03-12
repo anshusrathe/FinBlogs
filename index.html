@@ -528,7 +528,7 @@
           // Function to fetch and populate the Models Cards from models.json
           async function loadModels() {
             try {
-              const response = await fetch('content/models/models.json', { headers: { 'Accept': 'application/json' } });
+              const response = await fetch('content/reports/reports.json', { headers: { 'Accept': 'application/json' } });
               if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
               const models = await response.json();
               const cardsContainer = document.getElementById('models-data');
