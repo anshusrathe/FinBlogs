@@ -50,7 +50,7 @@ header .container {
     align-items: center;
 }
 
-.logo {
+.logo a {
     color: white;
     text-decoration: none;
 }
@@ -925,3 +925,10 @@ footer {
 .slide-controls {
     display: none;
 }
+
+/* Add/Update this somewhere in style.css */
+.container {
+    max-width: 1200px;     /* or any width you prefer */
+    margin: 0 auto;        /* auto-centers the container */
+    padding: 0 20px;       /* adds space on left and right sides */
+  }  

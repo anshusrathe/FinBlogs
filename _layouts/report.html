@@ -12,18 +12,20 @@
     <!-- Include header -->
     {% include header.html %}
 
-    <!-- Main content -->
-    <main>
-        <!-- Conditionally include PPT Component based on frontmatter -->
-        {% if page.ppt_enabled %}
-            {% include ppt-card-overlay.html %}
-        {% endif %}
+    <div class="container">
+        <!-- Main content -->
+        <main>
+            <!-- Conditionally include PPT Component based on frontmatter -->
+            {% if page.ppt_enabled %}
+                {% include ppt-card-overlay.html %}
+            {% endif %}
 
-        <!-- Main content injected from individual pages -->
-        {{ content }}
-    </main>
-
+            <!-- Main content injected from individual pages -->
+            {{ content }}
+        </main>
+    </div>
     <!-- Include footer -->
+     
     {% include footer.html %}
 
     <!-- Back to top button -->
