@@ -1,32 +1,123 @@
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section about">
-                <h3>About Financial Insights</h3>
-                <p>Independent financial research and analysis to help you make informed investment decisions.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .footer-section p {
+            color: #d1d5db;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .footer-section.links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-section.links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section.links a {
+            color: #d1d5db;
+            text-decoration: none;
+        }
+        
+        .footer-section.links a:hover {
+            color: white;
+        }
+        
+        .disclaimer {
+            font-size: 14px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+        }
+    </style>
+</head>
+<body>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>About Financial Insights</h3>
+                    <p>Independent financial research and analysis to help you make informed investment decisions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/FinBlogs/index.html">Home</a></li>
+                        <li><a href="#reports">Research Reports</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> contact@financialinsights.com</p>
+                    <p class="disclaimer">Disclaimer: The information provided on this site is for educational purposes only and should not be considered financial advice.</p>
                 </div>
             </div>
-            <div class="footer-section links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="#reports">Research Reports</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section contact">
-                <h3>Contact</h3>
-                <p><i class="fas fa-envelope"></i> contact@financialinsights.com</p>
-                <p class="disclaimer">Disclaimer: The information provided on this site is for educational purposes only and should not be considered financial advice.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Financial Insights. All rights reserved.</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Financial Insights. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
+</body>
+</html>
