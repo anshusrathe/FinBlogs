@@ -847,15 +847,10 @@ footer {
 }
 
 .ppt-slide {
-    background-color: white;
-    width: 90%;
-    min-height: 500px; /* Increased min-height */
-    display: block;
-    margin-bottom: 2rem;
-    padding: 2rem;
-    border: 1px solid var(--grey-medium);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    width: 80%;
+    max-width: 800px;
+    margin: 2rem auto; /* center it nicely */
+    min-height: auto; /* or remove it entirely */
 }
 
 .ppt-slide img {
