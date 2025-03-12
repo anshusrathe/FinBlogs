@@ -859,11 +859,13 @@ footer {
 }
 
 .ppt-slide img {
+    width: auto;
     max-width: 100%;
-    max-height: 80%;
+    height: auto;
+    max-height: 80vh; /* Use viewport height to better control the image size */
     border: 1px solid #ddd;
     display: block;
-    margin: 0 auto 1rem auto;
+    margin: 0 auto 1rem;
 }
 
 .slide-controls {

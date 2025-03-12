@@ -37,7 +37,7 @@
 
         // Close overlay when clicking the overlay background
         pptOverlay.addEventListener('click', (e) => {
-            if (e.target === pptOverlay) {
+            if (!e.target.closest('.ppt-viewer')) {  // if the click is not inside ppt-viewer
                 pptOverlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
