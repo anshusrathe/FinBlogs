@@ -4,6 +4,7 @@ import json
 import re
 import yaml
 import datetime
+import pathlib
 
 def json_serial(obj):
     """JSON serializer for objects not serializable by default json code"""
@@ -22,6 +23,17 @@ def extract_frontmatter(markdown_content):
         except yaml.YAMLError as e:
             print(f"Error parsing frontmatter: {e}")
     return {}
+
+def generate_link(file_name):
+    """Generate a link for the markdown file."""
+    # Remove the .md extension
+    base_name = os.path.splitext(file_name)[0]
+    
+    # Convert to URL-friendly format (replace spaces with hyphens, lowercase)
+    url_friendly = base_name.replace(' ', '-').lower()
+    
+    # Return the potential webpage URL with the repo name prefix
+    return f"/FinBlogs/content/reports/{url_friendly}"
 
 def create_reports_json():
     """Create or update reports.json file based on markdown files in /content/reports."""
@@ -48,13 +60,17 @@ def create_reports_json():
                 # Extract frontmatter
                 frontmatter = extract_frontmatter(content)
                 
+                # Generate link
+                link = generate_link(file_name)
+                
                 # Extract only the specified fields
                 extracted_data = {
                     "file": file_name,
                     "title": frontmatter.get("title", ""),
                     "date": frontmatter.get("date", ""),
                     "category": frontmatter.get("category", ""),
-                    "summary": frontmatter.get("summary", "")
+                    "summary": frontmatter.get("summary", ""),
+                    "link": link
                 }
                 
                 reports_data.append(extracted_data)
