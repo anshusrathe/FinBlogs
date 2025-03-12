@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/reports/InPsy.md",
+                "file": "content/reports/example.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "InPsy"
+              "title": "example"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/reports/InPsy.md",
+                "file": "content/reports/example.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for InPsy"
+              "title": "Backlinks for example"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "content/reports/InPsy.md",
+                "file": "content/reports/example.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from InPsy"
+              "title": "Outgoing links from example"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "content/reports/InPsy.md",
+                "file": "content/reports/example.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of InPsy"
+              "title": "Outline of example"
             }
           }
         ]
@@ -170,11 +170,12 @@
   },
   "active": "e088aeec5649ca14",
   "lastOpenFiles": [
+    "content/reports/InPsy.md",
+    "content/models/InPsy.md",
     "content/modelsdatabase.html",
     "content/reportsdatabase.html",
     "content/reports/example.md",
     "content/models/Project_1.md",
-    "content/reports/InPsy.md",
     "content/models/models.json",
     "update_models_json.py",
     "content/models/update_models_json.py",
