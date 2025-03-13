@@ -25,5 +25,14 @@
     "summary": "Didn't expected this to be this smooth",
     "link": "/FinBlogs/content/reports/project_1",
     "type": ""
+  },
+  {
+    "file": "DeepSeek's Advent.md",
+    "title": "Advent of AI",
+    "date": "2025-03-01",
+    "category": "Market Analysis",
+    "summary": "Viewing the aggressiveness of stockouts with the advent of modern technological business working in disruptive technologies.",
+    "link": "/FinBlogs/content/reports/deepseek's-advent",
+    "type": "researchreport"
   }
 ]
