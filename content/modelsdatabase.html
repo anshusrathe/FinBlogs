@@ -315,6 +315,14 @@
             nav {
                 margin-top: 20px;
                 width: 100%;
+                /* Added mobile collapse functionality */
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+            }
+            
+            nav.active {
+                max-height: 300px; /* Adjust this value as needed */
             }
             
             nav ul {
@@ -332,7 +340,6 @@
                 top: 20px;
                 right: 20px;
             }
-            
             .search-box {
                 flex-direction: column;
             }

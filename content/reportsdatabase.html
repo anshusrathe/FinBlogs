@@ -243,6 +243,14 @@
             nav {
                 margin-top: 20px;
                 width: 100%;
+                /* Added mobile collapse functionality */
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+            }
+            
+            nav.active {
+                max-height: 300px; /* Adjust this value as needed */
             }
             
             nav ul {
@@ -259,6 +267,19 @@
                 position: absolute;
                 top: 20px;
                 right: 20px;
+            }
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-input {
+                border-right: 1px solid #e5e7eb;
+                border-radius: 4px 4px 0 0;
+            }
+            
+            .search-button {
+                border-radius: 0 0 4px 4px;
+                padding: 10px;
             }
         }
     </style>
