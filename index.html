@@ -535,7 +535,7 @@
           tbody.innerHTML = '';
           
           // Filter reports to include only those where type is "researchreport"
-          const filteredReports = reports.filter(report => report.type.trim() === "researchreport");
+          const filteredReports = reports.filter(report => report.type && report.type.trim() === "researchreport");
 
           // Limit to only 5 reports
           const limitedReports = filteredReports.slice(0, 5);
