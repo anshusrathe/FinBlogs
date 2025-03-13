@@ -36,60 +36,6 @@ body {
     background-color: var(--light);
 }
 
-.logo a {
-    color: white;
-    text-decoration: none;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.logo h1 {
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-nav li {
-    margin-left: 30px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #ddd;
-}
-
-.mobile-nav-toggle {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.header-badge {
-    background-color: var(--primary);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    font-size: 0.875rem;
-    font-weight: 500;
-}
-
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', Georgia, serif;
