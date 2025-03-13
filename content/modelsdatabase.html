@@ -509,19 +509,35 @@
       // Function to fetch and populate the Models Cards from reports.json
       async function loadModels() {
         try {
-          const response = await fetch('/content/reports/reports.json', { headers: { 'Accept': 'application/json' } });
+          const response = await fetch('/reports/reports.json', { headers: { 'Accept': 'application/json' } });
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-          const reports = await response.json();
+          const models = await response.json();
+          const cardsContainer = document.getElementById('models-data');
+          cardsContainer.innerHTML = '';
           
-          // Filter models based on type where the type is empty or not present
-          allModels = reports.filter(model => !model.type || model.type.trim() === "");
+          // Filter models based on type and collect them
+          const validModels = models.filter(model => !model.type || model.type.trim() === "");
           
-          // Display all models
-          displayModels(allModels);
+            validModels.forEach(model => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+              <div class="card-header">
+                <span class="category">${model.category}</span>
+                <span class="date">${model.date}</span>
+              </div>
+              <div class="card-body">
+                <h3><a href="${model.link}">${model.title}</a></h3>
+                <p>${model.summary}</p>
+              </div>
+              <div class="card-footer">
+                <a href="${model.link}" class="btn btn-outline">View model page</a>
+              </div>
+            `;
+            cardsContainer.appendChild(card);
+          });
         } catch (error) {
           console.error('Error fetching models:', error);
-          const cardsContainer = document.getElementById('models-data');
-          cardsContainer.innerHTML = '<div class="no-results">Could not load models. Please try again later.</div>';
         }
       }
 
