@@ -376,9 +376,7 @@
             // Function to fetch and populate the Reports Table from reports.json
             async function loadReports() {
                 try {
-                    // Add a timestamp to bypass cache
-                    const cacheBuster = `?_=${new Date().getTime()}`;
-                    const response = await fetch('reports/reports.json' + cacheBuster, { headers: { 'Accept': 'application/json' } });
+                    const response = await fetch('reports/reports.json', { headers: { 'Accept': 'application/json' } });
                     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                     const reports = await response.json();
                     // Filter reports that have type equal to "researchreport"
