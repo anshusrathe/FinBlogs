@@ -980,3 +980,9 @@ footer {
     overflow-x: hidden;
   }
 }
+
+.excerpt img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 50%; /* Makes the image circular */
+}

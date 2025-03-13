@@ -38,7 +38,10 @@ Analytical methods employed include thematic analysis to identify recurring tren
 
 #### 4.1. NVIDIA's Dominant Market Position and Future Growth
 
-![NewImage|550x245](https://anshusrathe.github.io/FinBlogs/assets/img/reports/chart.png)
+
+ <div class="excerpt">
+    <img src="https://anshusrathe.github.io/FinBlogs/assets/img/reports/chart.png" alt="Markdown Logo">
+  </div>
 
 *   **AI Leadership:** Sources consistently highlight NVIDIA's leadership in the AI chip market, particularly its GPUs crucial for AI model training in data centers (Motley Fool, Robinhood, TipRanks).
 *   **Demand Surge:**  Demand for NVIDIA's GPUs remains exceptionally strong, driven by the widespread adoption of AI across industries (Motley Fool, TipRanks). The new Blackwell architecture is experiencing "staggering demand" (Motley Fool).
