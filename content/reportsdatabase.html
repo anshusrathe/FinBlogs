@@ -145,39 +145,49 @@
             color: var(--medium-text);
         }
         
+         /* Reports Table Section */
         .reports-list {
-            padding: 80px 0;
-            background-color: white;
+        background-color: white;
         }
         
         .reports-table {
-            overflow-x: auto;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
         }
         
         table {
-            width: 100%;
-            border-collapse: collapse;
+        width: 100%;
+        border-collapse: collapse;
         }
         
         th, td {
-            padding: 16px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
+        padding: 1rem;
+        text-align: left;
         }
         
         th {
-            background-color: #f9fafb;
-            font-weight: 600;
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+        background-color: var(--light-bg);
+        }
+        
+        td {
+        border-bottom: 1px solid var(--border-color);
+        }
+        
+        tr:last-child td {
+        border-bottom: none;
         }
         
         td a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        td a:hover {
-            text-decoration: underline;
+        color: var(--secondary-color);
+        font-weight: 500;
         }
         
         /* Search bar styling */
