@@ -841,8 +841,8 @@ footer {
 }
 
 .ppt-slide {
-    width: 80%;
-    max-width: 800px;
+    width: auto;
+    max-width: 100%;
     margin: 2rem auto; /* center it nicely */
     min-height: auto; /* or remove it entirely */
 }
