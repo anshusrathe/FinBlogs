@@ -561,10 +561,7 @@
           const cardsContainer = document.getElementById('models-data');
           cardsContainer.innerHTML = '';
           
-          // Filter models based on type and collect them
           const validModels = models.filter(model => !model.type || model.type.trim() === "");
-          
-          // Limit to only 5 models
           const limitedModels = validModels.slice(0, 5);
           
           limitedModels.forEach(model => {
