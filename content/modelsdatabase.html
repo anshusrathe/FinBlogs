@@ -448,39 +448,51 @@
             
             // Function to fetch and populate the Models Cards from reports.json
             async function loadModels() {
-            try {
-                const response = await fetch('reports/reports.json', { headers: { 'Accept': 'application/json' } });
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const models = await response.json();
-                const cardsContainer = document.getElementById('models-data');
-                cardsContainer.innerHTML = '';
-                models.forEach(model => {
-                // Only create a card if model.type is exactly an empty string.
-                if (model.type && model.type.trim() !== "") {
-                    return; // Skip this object if it has a non-empty type
+                try {
+                    const response = await fetch('reports/reports.json', { headers: { 'Accept': 'application/json' } });
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const data = await response.json();
+                    // Filter models - only include items with empty type
+                    allModels = data.filter(model => !model.type || model.type.trim() === "");
+                    displayModels(allModels);
+                } catch (error) {
+                    console.error('Error fetching models:', error);
                 }
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <div class="card-header">
-                    <span class="category">${model.category}</span>
-                    <span class="date">${model.date}</span>
-                    </div>
-                    <div class="card-body">
-                    <h3><a href="${model.link}">${model.title}</a></h3>
-                    <p>${model.summary}</p>
-                    </div>
-                    <div class="card-footer">
-                    <a href="${model.link}" class="btn btn-outline">Read Full Report</a>
-                    </div>
-                `;
-                cardsContainer.appendChild(card);
+            }
+            
+            // Function to display models in the cards container
+            function displayModels(models) {
+                const cardsContainer = document.getElementById('models-data');
+                const noResults = document.getElementById('no-results');
+                
+                cardsContainer.innerHTML = '';
+                
+                if (models.length === 0) {
+                    noResults.style.display = 'block';
+                    return;
+                }
+                
+                noResults.style.display = 'none';
+                
+                models.forEach(model => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <span class="category">${model.category}</span>
+                            <span class="date">${model.date}</span>
+                        </div>
+                        <div class="card-body">
+                            <h3><a href="${model.link}">${model.title}</a></h3>
+                            <p>${model.summary}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="${model.link}" class="btn btn-outline">Read Full Report</a>
+                        </div>
+                    `;
+                    cardsContainer.appendChild(card);
                 });
-            } catch (error) {
-                console.error('Error fetching models:', error);
             }
-            }
-
             
             // Search functionality
             function setupSearch() {
