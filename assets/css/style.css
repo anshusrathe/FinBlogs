@@ -986,6 +986,8 @@ footer {
     height: auto;
     border-radius: 10px; /* Curves the corners */
     transition: box-shadow 0.3s ease;
+    display: block;
+    margin: 0 auto;
 }
 
 .excerpt img:hover {
