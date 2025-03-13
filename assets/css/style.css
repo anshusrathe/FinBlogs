@@ -916,7 +916,7 @@ footer {
     width: auto;
     max-width: 100%;
     height: auto;
-    max-height: 80vh; /* Use viewport height to better control the image size */
+    max-height: 80vh; /* Use viewport height for better scaling */
     border: 1px solid #ddd;
     display: block;
     margin: 0 auto 1rem;
@@ -931,4 +931,58 @@ footer {
     max-width: 1200px;     /* or any width you prefer */
     margin: 0 auto;        /* auto-centers the container */
     padding: 0 20px;       /* adds space on left and right sides */
-  }  
+}
+
+/* Mobile Dark Mode Override: Disable dark mode for mobile devices */
+@media (max-width: 768px) and (prefers-color-scheme: dark) {
+  /* Revert variables to light mode values */
+  :root {
+    --light: #f8f9fa;      /* original light background */
+    --dark: #212529;       /* original dark text */
+    --grey-light: #e9ecef;  /* original light grey */
+    --grey-medium: #adb5bd; /* original medium grey */
+  }
+  /* Ensure body and major components use light colors */
+  body {
+    background-color: var(--light) !important;
+    color: var(--dark) !important;
+  }
+  .unit-container,
+  .fundamental-item,
+  .stat-card,
+  .chart-container,
+  .metric-card,
+  .concept-box {
+    background-color: white !important;
+  }
+  tr:nth-child(odd) {
+    background-color: white !important;
+  }
+  tr:nth-child(even) {
+    background-color: var(--grey-light) !important;
+  }
+  .info-callout {
+    background-color: #e3f2fd !important;
+  }
+  .warning-callout {
+    background-color: #fff8e1 !important;
+  }
+  .conclusion {
+    background-color: #f1f8e9 !important;
+  }
+}
+
+/* Mobile Container Alignment Fix */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 0 15px; /* Adjust padding if needed */
+  }
+}
+
+/* Prevent horizontal overflow on mobile devices */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+}
