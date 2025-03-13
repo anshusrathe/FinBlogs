@@ -1,5 +1,32 @@
 [
   {
+    "file": "evolving_ai_landscape.md",
+    "title": "Evolving AI Landscape",
+    "date": "2025-03-14",
+    "category": "Industry Analysis",
+    "summary": "Checking upon the recent development in the field of AI",
+    "link": "/FinBlogs/content/reports/evolving_ai_landscape",
+    "type": "researchreport"
+  },
+  {
+    "file": "compiled_report.md",
+    "title": "DeepSeek: A market winner?",
+    "date": "2025-03-12",
+    "category": "Market Analysis",
+    "summary": "Assessing the role of disruptive business in stock valuations",
+    "link": "/FinBlogs/content/reports/compiled_report",
+    "type": "researchreport"
+  },
+  {
+    "file": "tata_motors.md",
+    "title": "Tata Motors sector capital",
+    "date": "2025-03-12",
+    "category": "Market Analysis",
+    "summary": "Overviewing the market capitalization of the TATA Groups at present in India",
+    "link": "/FinBlogs/content/reports/tata_motors",
+    "type": "researchreport"
+  },
+  {
     "file": "example.md",
     "title": "Your Report Title",
     "date": "2025-03-11",
@@ -25,6 +52,15 @@
     "summary": "Didn't expected this to be this smooth",
     "link": "/FinBlogs/content/reports/project_1",
     "type": ""
+  },
+  {
+    "file": "advancements_in_biotech.md",
+    "title": "Opportunities in biotech advancements",
+    "date": "2025-03-08",
+    "category": "Valuation Research",
+    "summary": "Forecasting the valuation yields in the biotech sector by analyzing its development",
+    "link": "/FinBlogs/content/reports/advancements_in_biotech",
+    "type": "researchreport"
   },
   {
     "file": "deepseeks-advent.md",

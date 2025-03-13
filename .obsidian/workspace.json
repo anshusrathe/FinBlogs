@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/reports/deepseeks-advent.md",
+                "file": "content/reports/tata_motors.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "deepseeks-advent"
+              "title": "tata_motors"
             }
           }
         ]
@@ -169,19 +169,24 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "9e52b2212ef0eeff",
+  "active": "e088aeec5649ca14",
   "lastOpenFiles": [
-    "_includes/image.html",
-    "assets/img/reports/chart.png",
-    "content/reports/deepseeks-advent.md",
+    "content/reports/project_1.md",
     "content/reports/inpsy.md",
     "content/reports/example.md",
+    "content/reports/evolving_ai_landscape.md",
+    "content/reports/deepseeks-advent.md",
+    "content/reports/compiled_report.md",
+    "content/reports/advancements_in_biotech.md",
+    "content/reports/tata_motors.md",
+    "templates/imtemp.md",
+    "_includes/image.html",
+    "assets/img/reports/chart.png",
     "content/reports/DeepSeek's Advent.md",
     "content/reports/DeepSeek's_Advent.md",
     "assets/img/reports/chart2.png",
     "assets/img/reports/Pasted image 20250228204907.png",
     "templates/Report_template.md",
-    "content/reports/project_1.md",
     "content/reports/InPsy.md",
     "content/models/InPsy.md",
     "content/modelsdatabase.html",

@@ -1,0 +1,11 @@
+{
+  "templater-obsidian:templates/imtemp.md": [
+    {
+      "modifiers": [
+        "Alt",
+        "Shift"
+      ],
+      "key": "I"
+    }
+  ]
+}
