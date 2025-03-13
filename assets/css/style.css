@@ -982,7 +982,12 @@ footer {
 }
 
 .excerpt img {
-    max-width: 50%;
+    max-width: 70%;
     height: auto;
-    border-radius: 50%; /* Makes the image circular */
+    border-radius: 10px; /* Curves the corners */
+    transition: box-shadow 0.3s ease;
+}
+
+.excerpt img:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

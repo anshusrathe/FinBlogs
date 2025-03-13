@@ -58,7 +58,7 @@ Analytical methods employed include thematic analysis to identify recurring tren
 
 #### 4.3. Mixed Technical Indicators and Trading Signals
 
-![[Pasted image 20250228204829.png]]
+[newimage](https://anshusrathe.github.io/FinBlogs/assets/img/chart2.png){:width="200px" height="200px"}
 
 *   **StockInvest.us Score:**  StockInvest.us assigns a negative score of -2.14 and labels NVDA a "Sell Candidate."
 *   **Moving Averages:**  A buy signal is present from the short-term Moving Average, but a sell signal from the long-term Moving Average indicates a general sell signal (StockInvest.us).
