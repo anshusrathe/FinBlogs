@@ -707,6 +707,40 @@ footer {
     .fundamentals-grid {
         grid-template-columns: 1fr;
     }
+
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    nav {
+    margin-top: 20px;
+    width: 100%;
+    /* Added mobile collapse functionality */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    }
+    
+    nav.active {
+    max-height: 300px; /* Adjust this value as needed */
+    }
+    
+    nav ul {
+    flex-direction: column;
+    }
+    
+    nav li {
+    margin: 10px 0;
+    margin-left: 0;
+    }
+    
+    .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    }
 }
 
 /* Dark mode (optional but increasingly expected) */
