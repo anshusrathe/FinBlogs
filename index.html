@@ -528,7 +528,9 @@
       // Function to fetch and populate the Reports Table from reports.json
       async function loadReports() {
         try {
-          const response = await fetch('content/reports/reports.json', { headers: { 'Accept': 'application/json' } });
+          // Add a timestamp to bypass cache
+          const cacheBuster = `?_=${new Date().getTime()}`;
+          const response = await fetch('content/reports/reports.json' + cacheBuster, { headers: { 'Accept': 'application/json' } });
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           const reports = await response.json();
           const tbody = document.getElementById('reports-data');
@@ -558,7 +560,9 @@
       // Function to fetch and populate the Models Cards from reports.json
       async function loadModels() {
         try {
-          const response = await fetch('content/reports/reports.json', { headers: { 'Accept': 'application/json' } });
+          // Add a timestamp to bypass cache
+          const cacheBuster = `?_=${new Date().getTime()}`;
+          const response = await fetch('content/reports/reports.json' + cacheBuster, { headers: { 'Accept': 'application/json' } });
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
           const models = await response.json();
           const cardsContainer = document.getElementById('models-data');
