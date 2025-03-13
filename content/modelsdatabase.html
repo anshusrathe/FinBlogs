@@ -457,9 +457,7 @@
             // Function to fetch and populate the Models Cards from reports.json
             async function loadModels() {
                 try {
-                    // Add a timestamp to bypass cache
-                    const cacheBuster = `?_=${new Date().getTime()}`;
-                    const response = await fetch('reports/reports.json' + cacheBuster, { headers: { 'Accept': 'application/json' } });
+                    const response = await fetch('reports/reports.json', { headers: { 'Accept': 'application/json' } });
                     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                     const data = await response.json();
                     // Filter models - only include items with empty type
