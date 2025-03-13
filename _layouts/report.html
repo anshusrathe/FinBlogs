@@ -44,5 +44,16 @@
     </script>
     {% endif %}
 
+    <script>
+        // Ensure the DOM is fully loaded before executing scripts
+        document.addEventListener('DOMContentLoaded', function() {
+          // Mobile navigation toggle
+          const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+          const nav = document.querySelector('nav');
+          mobileNavToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+          });
+        });
+    </script>
 </body>
 </html>
