@@ -6,158 +6,267 @@
   <title>Financial Insights - Research Reports</title>
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Basic styling for preview purposes */
-    body {
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      color: #333;
+    /* Modern Finance Portfolio Website Styling */
+    :root {
+      --primary-color: #0a2540;
+      --secondary-color: #00a8e8;
+      --accent-color: #00d1b2;
+      --light-bg: #f8fafc;
+      --dark-text: #1e293b;
+      --medium-text: #475569;
+      --light-text: #94a3b8;
+      --border-color: #e2e8f0;
+      --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
     
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark-text);
+      background-color: var(--light-bg);
     }
     
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--primary-color);
+    }
+    
+    p {
+      margin-bottom: 1rem;
+    }
+    
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    a:hover {
+      color: var(--accent-color);
+    }
+    
+    /* Header & Navigation */
     header {
-      background-color: #1e3a8a;
-      color: white;
-      padding: 20px 0;
+      background-color: var(--primary-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     
     header .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem 1.5rem;
     }
     
     .logo a {
+      display: flex;
+      align-items: center;
       color: white;
-      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.5rem;
     }
     
     .logo h1 {
+      color: white;
       margin: 0;
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-    }
-    
-    nav {
-      /* Desktop view: navigation is visible */
+      font-size: 1.5rem;
     }
     
     nav ul {
-      list-style: none;
       display: flex;
-      margin: 0;
-      padding: 0;
+      list-style: none;
     }
     
     nav li {
-      margin-left: 30px;
+      margin-left: 2rem;
     }
     
     nav a {
       color: white;
-      text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s;
+      padding: 0.5rem 0;
+      position: relative;
     }
     
-    nav a:hover {
-      color: #ddd;
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-color);
+      transition: var(--transition);
+    }
+    
+    nav a:hover::after {
+      width: 100%;
     }
     
     .mobile-nav-toggle {
       display: none;
-      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
       cursor: pointer;
     }
     
+    /* Hero Section */
     .hero {
-      background-color: #f0f9ff;
-      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, #1a365d 100%);
+      color: white;
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/api/placeholder/1400/500');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
       text-align: center;
     }
     
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      margin-bottom: 20px;
-      color: #1e3a8a;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: white;
     }
     
     .hero p {
-      font-size: 18px;
-      max-width: 800px;
-      margin: 0 auto 30px;
-      color: #4b5563;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
     }
     
+    /* Buttons */
     .btn {
       display: inline-block;
-      padding: 12px 24px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
     .btn-primary {
-      background-color: #1e3a8a;
+      background-color: var(--secondary-color);
       color: white;
     }
     
     .btn-primary:hover {
-      background-color: #1e40af;
+      background-color: var(--accent-color);
+      transform: translateY(-2px);
     }
     
     .btn-secondary {
-      background-color: #4b5563;
+      background-color: rgba(255, 255, 255, 0.15);
       color: white;
+      backdrop-filter: blur(5px);
     }
     
     .btn-secondary:hover {
-      background-color: #374151;
+      background-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
     }
     
     .btn-outline {
-      border: 2px solid #1e3a8a;
-      color: #1e3a8a;
+      border: 2px solid var(--secondary-color);
+      color: var(--secondary-color);
+      background-color: transparent;
+      font-weight: 500;
     }
     
     .btn-outline:hover {
-      background-color: #1e3a8a;
+      background-color: var(--secondary-color);
       color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* Section Styles */
+    section {
+      padding: 5rem 0;
     }
     
     .section-header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 3rem;
     }
     
     .section-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      color: #1e3a8a;
-      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--secondary-color);
     }
     
     .section-header p {
-      color: #6b7280;
+      color: var(--medium-text);
+      max-width: 600px;
+      margin: 0 auto;
     }
     
+    /* Reports Table Section */
     .reports-list {
-      padding: 80px 0;
       background-color: white;
     }
     
     .reports-table {
-      overflow-x: auto;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
     }
     
     table {
@@ -166,238 +275,304 @@
     }
     
     th, td {
-      padding: 16px;
+      padding: 1rem;
       text-align: left;
-      border-bottom: 1px solid #e5e7eb;
     }
     
     th {
-      background-color: #f9fafb;
+      background-color: var(--primary-color);
+      color: white;
       font-weight: 600;
     }
     
+    tr:nth-child(even) {
+      background-color: var(--light-bg);
+    }
+    
+    td {
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
     td a {
-      color: #1e3a8a;
-      text-decoration: none;
+      color: var(--secondary-color);
       font-weight: 500;
     }
     
-    td a:hover {
-      text-decoration: underline;
-    }
-    
+    /* Featured Cards Section */
     .featured-reports {
-      padding: 80px 0;
-      background-color: #f9fafb;
+      background-color: var(--light-bg);
     }
     
     .report-cards {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
     
     .card {
       background-color: white;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
     
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
     }
     
     .card-header {
-      padding: 16px;
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid #e5e7eb;
+      align-items: center;
     }
     
     .category {
       display: inline-block;
-      padding: 4px 8px;
-      background-color: #e1effe;
-      color: #1e40af;
-      border-radius: 4px;
-      font-size: 14px;
+      padding: 0.25rem 0.75rem;
+      background-color: rgba(0, 168, 232, 0.1);
+      color: var(--secondary-color);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     
     .date {
-      color: #6b7280;
-      font-size: 14px;
+      color: var(--medium-text);
+      font-size: 0.875rem;
     }
     
     .card-body {
-      padding: 20px;
+      padding: 1.5rem;
+      flex-grow: 1;
     }
     
     .card-body h3 {
-      margin-top: 0;
-      font-size: 20px;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
     }
     
-    .card-body h3 a {
-      color: #1e3a8a;
-      text-decoration: none;
-    }
-    
-    .card-body h3 a:hover {
-      text-decoration: underline;
+    .card-body p {
+      color: var(--medium-text);
+      font-size: 0.95rem;
     }
     
     .card-footer {
-      padding: 16px 20px;
-      border-top: 1px solid #e5e7eb;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border-color);
       text-align: right;
     }
     
-    .newsletter {
-      background-color: #1e3a8a;
-      color: white;
-      padding: 60px 0;
-    }
-    
-    .newsletter-content {
-      max-width: 600px;
-      margin: 0 auto;
+    /* View More Button Section */
+    .view-more {
       text-align: center;
+      margin-top: 2rem;
     }
     
-    .newsletter-form {
-      display: flex;
-      margin-top: 20px;
-    }
-    
-    .newsletter-form input {
-      flex-grow: 1;
-      padding: 12px 16px;
-      border: none;
-      border-radius: 4px 0 0 4px;
-      font-size: 16px;
-    }
-    
-    .newsletter-form button {
-      border-radius: 0 4px 4px 0;
-      border: none;
-      cursor: pointer;
-    }
-    
+    /* Footer */
     footer {
-      background-color: #1f2937;
+      background-color: var(--primary-color);
       color: white;
-      padding: 60px 0 20px;
+      padding: 4rem 0 1rem;
     }
     
     .footer-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-bottom: 40px;
+      gap: 2rem;
+      margin-bottom: 3rem;
     }
     
     .footer-section h3 {
-      font-size: 18px;
-      margin-bottom: 20px;
-      font-weight: 500;
+      color: white;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+    
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--secondary-color);
     }
     
     .footer-section p {
-      color: #d1d5db;
+      color: var(--light-text);
+      margin-bottom: 1rem;
     }
     
     .social-links {
-      margin-top: 20px;
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
     
     .social-links a {
-      display: inline-block;
-      margin-right: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
       color: white;
-      font-size: 20px;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
     }
     
     .footer-section.links ul {
       list-style: none;
-      padding: 0;
-      margin: 0;
     }
     
     .footer-section.links li {
-      margin-bottom: 10px;
+      margin-bottom: 0.75rem;
     }
     
     .footer-section.links a {
-      color: #d1d5db;
-      text-decoration: none;
+      color: var(--light-text);
+      transition: var(--transition);
     }
     
     .footer-section.links a:hover {
       color: white;
+      padding-left: 5px;
+    }
+    
+    .footer-section.contact p {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-section.contact p i {
+      margin-right: 0.75rem;
+      color: var(--secondary-color);
     }
     
     .disclaimer {
-      font-size: 14px;
-      margin-top: 20px;
-      font-style: italic;
+      font-size: 0.85rem;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      margin-top: 1.5rem;
     }
     
     .footer-bottom {
       text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid #374151;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.875rem;
+      color: var(--light-text);
     }
     
-    /* Mobile Styles */
+    /* Responsive Styles */
     @media (max-width: 768px) {
-      header .container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      nav {
-        margin-top: 20px;
-        width: 100%;
-        /* Added mobile collapse functionality */
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease-in-out;
-      }
-      
-      nav.active {
-        max-height: 300px; /* Adjust this value as needed */
-      }
-      
-      nav ul {
-        flex-direction: column;
-      }
-      
-      nav li {
-        margin: 10px 0;
-        margin-left: 0;
+      .hero h1 {
+        font-size: 2rem;
       }
       
       .mobile-nav-toggle {
         display: block;
+      }
+      
+      nav {
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
       }
       
-      .newsletter-form {
+      nav.active {
+        max-height: 300px;
+        padding: 1rem 0;
+      }
+      
+      nav ul {
         flex-direction: column;
+        padding: 0 1.5rem;
       }
       
-      .newsletter-form input {
-        border-radius: 4px;
-        margin-bottom: 10px;
+      nav li {
+        margin: 0.75rem 0;
+        margin-left: 0;
       }
       
-      .newsletter-form button {
-        border-radius: 4px;
+      .reports-table {
+        overflow-x: auto;
+        display: block;
+      }
+      
+      th, td {
+        padding: 0.75rem;
+      }
+      
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .date {
+        margin-top: 0.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero {
+        padding: 3rem 0;
+      }
+      
+      .hero-content {
+        padding: 0 1rem;
+      }
+      
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      
+      section {
+        padding: 3rem 0;
+      }
+      
+      .section-header h2 {
+        font-size: 1.5rem;
       }
     }
   </style>
@@ -418,9 +593,9 @@
           <li><a href="#featured">Dashboards</a></li>
         </ul>
       </nav>
-      <div class="mobile-nav-toggle">
+      <button class="mobile-nav-toggle">
         <i class="fas fa-bars"></i>
-      </div>
+      </button>
     </div>
   </header>
 
@@ -431,8 +606,10 @@
         <div class="hero-content">
           <h1>Financial Research Reports & Valuation Models</h1>
           <p>This is my personal portfolio where I publish my independent research reports which are mostly sector analysis, equity research reports or market analysis reports. Here I also publish my Valuation models that are used in the industry for doing valuations. You can click on the buttons below to navigate to the desired sections!</p>
-          <a href="#reports" class="btn btn-primary">Explore Reports &gt;</a>
-          <a href="#featured" class="btn btn-secondary">View Financial Models</a>
+          <div class="hero-buttons">
+            <a href="#reports" class="btn btn-primary">Explore Reports</a>
+            <a href="#featured" class="btn btn-secondary">View Financial Models</a>
+          </div>
         </div>
       </div>
     </section>
@@ -459,7 +636,7 @@
           </table>
         </div>
         <!-- "View More Reports" button -->
-        <div style="text-align: center; margin-top: 20px;">
+        <div class="view-more">
           <a href="/FinBlogs/content/reportsdatabase.html" class="btn btn-outline">View More Reports</a>
         </div>
       </div>
@@ -475,7 +652,7 @@
         <!-- Cards container that will be filled by models.json data -->
         <div class="report-cards" id="models-data"></div>
         <!-- "View More Models" button -->
-        <div style="text-align: center; margin-top: 20px;">
+        <div class="view-more">
           <a href="/FinBlogs/content/modelsdatabase.html" class="btn btn-outline">View More Models</a>
         </div>
       </div>
