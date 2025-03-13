@@ -286,6 +286,15 @@ tr:last-child td {
     border-bottom: none;
 }
 
+@media (max-width: 768px) {
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    }
+}
+
 /* Callouts */
 .info-callout {
     background-color: #e3f2fd;
@@ -992,4 +1001,19 @@ footer {
 
 .excerpt img:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .excerpt img {
+        max-width: 95%;
+        height: auto;
+        border-radius: 10px;
+        transition: box-shadow 0.3s ease;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .excerpt img:hover {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 }
