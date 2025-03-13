@@ -1,5 +1,23 @@
 [
   {
+    "file": "robust_checking.md",
+    "title": "robust checking for reports",
+    "date": "2025-03-15",
+    "category": "again check",
+    "summary": "Checking",
+    "link": "/FinBlogs/content/reports/robust_checking",
+    "type": "researchreport"
+  },
+  {
+    "file": "robust_check_again.md",
+    "title": "robust checking for models",
+    "date": "2025-03-15",
+    "category": "again check",
+    "summary": "Checking",
+    "link": "/FinBlogs/content/reports/robust_check_again",
+    "type": null
+  },
+  {
     "file": "checkingformodels.md",
     "title": "checking for models",
     "date": "2025-03-14",
