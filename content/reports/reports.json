@@ -1,5 +1,14 @@
 [
   {
+    "file": "ensuring.md",
+    "title": "Ensuring the code don't break",
+    "date": "2025-03-16",
+    "category": "again check",
+    "summary": "Checking",
+    "link": "/FinBlogs/content/reports/ensuring",
+    "type": "researchreport"
+  },
+  {
     "file": "robust_checking.md",
     "title": "robust checking for reports",
     "date": "2025-03-15",
