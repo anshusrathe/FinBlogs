@@ -1,409 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Insights - Research Reports</title>
-    <link rel="stylesheet" href="/FinBlogs/assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Basic styling for preview purposes */
-        body {
-          font-family: 'Roboto', sans-serif;
-          line-height: 1.6;
-          color: #333;
-          margin: 0;
-          padding: 0;
-        }
-        
-        .container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 20px;
-        }
-        
-        header {
-          background-color: #1e3a8a;
-          color: white;
-          padding: 20px 0;
-        }
-        
-        header .container {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        
-        .logo a {
-          color: white;
-          text-decoration: none;
-        }
-        
-        .logo h1 {
-          margin: 0;
-          font-family: 'Playfair Display', serif;
-          font-size: 28px;
-        }
-        
-        nav {
-          /* Desktop view: navigation is visible */
-        }
-        
-        nav ul {
-          list-style: none;
-          display: flex;
-          margin: 0;
-          padding: 0;
-        }
-        
-        nav li {
-          margin-left: 30px;
-        }
-        
-        nav a {
-          color: white;
-          text-decoration: none;
-          font-weight: 500;
-          transition: color 0.3s;
-        }
-        
-        nav a:hover {
-          color: #ddd;
-        }
-        
-        .mobile-nav-toggle {
-          display: none;
-          font-size: 24px;
-          cursor: pointer;
-        }
-        
-        .hero {
-          background-color: #f0f9ff;
-          padding: 80px 0;
-          text-align: center;
-        }
-        
-        .hero h1 {
-          font-family: 'Playfair Display', serif;
-          font-size: 42px;
-          margin-bottom: 20px;
-          color: #1e3a8a;
-        }
-        
-        .hero p {
-          font-size: 18px;
-          max-width: 800px;
-          margin: 0 auto 30px;
-          color: #4b5563;
-        }
-        
-        .btn {
-          display: inline-block;
-          padding: 12px 24px;
-          border-radius: 4px;
-          text-decoration: none;
-          font-weight: 500;
-          transition: all 0.3s;
-        }
-        
-        .btn-primary {
-          background-color: #1e3a8a;
-          color: white;
-        }
-        
-        .btn-primary:hover {
-          background-color: #1e40af;
-        }
-        
-        .btn-secondary {
-          background-color: #4b5563;
-          color: white;
-        }
-        
-        .btn-secondary:hover {
-          background-color: #374151;
-        }
-        
-        .btn-outline {
-          border: 2px solid #1e3a8a;
-          color: #1e3a8a;
-        }
-        
-        .btn-outline:hover {
-          background-color: #1e3a8a;
-          color: white;
-        }
-        
-        .section-header {
-          text-align: center;
-          margin-bottom: 40px;
-        }
-        
-        .section-header h2 {
-          font-family: 'Playfair Display', serif;
-          font-size: 36px;
-          color: #1e3a8a;
-          margin-bottom: 10px;
-        }
-        
-        .section-header p {
-          color: #6b7280;
-        }
-        
-        .reports-list {
-          padding: 80px 0;
-          background-color: white;
-        }
-        
-        .featured-reports {
-          padding: 80px 0;
-          background-color: #f9fafb;
-        }
-        
-        .report-cards {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 30px;
-        }
-        
-        .card {
-          background-color: white;
-          border-radius: 8px;
-          overflow: hidden;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .card-header {
-          padding: 16px;
-          display: flex;
-          justify-content: space-between;
-          border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .category {
-          display: inline-block;
-          padding: 4px 8px;
-          background-color: #e1effe;
-          color: #1e40af;
-          border-radius: 4px;
-          font-size: 14px;
-        }
-        
-        .date {
-          color: #6b7280;
-          font-size: 14px;
-        }
-        
-        .card-body {
-          padding: 20px;
-        }
-        
-        .card-body h3 {
-          margin-top: 0;
-          font-size: 20px;
-        }
-        
-        .card-body h3 a {
-          color: #1e3a8a;
-          text-decoration: none;
-        }
-        
-        .card-body h3 a:hover {
-          text-decoration: underline;
-        }
-        
-        .card-footer {
-          padding: 16px 20px;
-          border-top: 1px solid #e5e7eb;
-          text-align: right;
-        }
-        
-        .newsletter {
-          background-color: #1e3a8a;
-          color: white;
-          padding: 60px 0;
-        }
-        
-        .newsletter-content {
-          max-width: 600px;
-          margin: 0 auto;
-          text-align: center;
-        }
-        
-        .newsletter-form {
-          display: flex;
-          margin-top: 20px;
-        }
-        
-        .newsletter-form input {
-          flex-grow: 1;
-          padding: 12px 16px;
-          border: none;
-          border-radius: 4px 0 0 4px;
-          font-size: 16px;
-        }
-        
-        .newsletter-form button {
-          border-radius: 0 4px 4px 0;
-          border: none;
-          cursor: pointer;
-        }
-        
-        footer {
-          background-color: #1f2937;
-          color: white;
-          padding: 60px 0 20px;
-        }
-        
-        .footer-content {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 40px;
-          margin-bottom: 40px;
-        }
-        
-        .footer-section h3 {
-          font-size: 18px;
-          margin-bottom: 20px;
-          font-weight: 500;
-        }
-        
-        .footer-section p {
-          color: #d1d5db;
-        }
-        
-        .social-links {
-          margin-top: 20px;
-        }
-        
-        .social-links a {
-          display: inline-block;
-          margin-right: 15px;
-          color: white;
-          font-size: 20px;
-        }
-        
-        .footer-section.links ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        
-        .footer-section.links li {
-          margin-bottom: 10px;
-        }
-        
-        .footer-section.links a {
-          color: #d1d5db;
-          text-decoration: none;
-        }
-        
-        .footer-section.links a:hover {
-          color: white;
-        }
-        
-        .disclaimer {
-          font-size: 14px;
-          margin-top: 20px;
-          font-style: italic;
-        }
-        
-        .footer-bottom {
-          text-align: center;
-          padding-top: 20px;
-          border-top: 1px solid #374151;
-        }
-        
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-          header .container {
-            flex-direction: column;
-            align-items: flex-start;
-          }
-          
-          nav {
-            margin-top: 20px;
-            width: 100%;
-            /* Added mobile collapse functionality */
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-          }
-          
-          nav.active {
-            max-height: 300px; /* Adjust this value as needed */
-          }
-          
-          nav ul {
-            flex-direction: column;
-          }
-          
-          nav li {
-            margin: 10px 0;
-            margin-left: 0;
-          }
-          
-          .mobile-nav-toggle {
-            display: block;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-          }
-          
-          .newsletter-form {
-            flex-direction: column;
-          }
-          
-          .newsletter-form input {
-            border-radius: 4px;
-            margin-bottom: 10px;
-          }
-          
-          .newsletter-form button {
-            border-radius: 4px;
-          }
-        }
-      </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Header</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Modern Finance Portfolio Website Styling */
+    :root {
+      --primary-color: #0a2540;
+      --secondary-color: #00a8e8;
+      --accent-color: #00d1b2;
+      --light-bg: #f8fafc;
+      --dark-text: #1e293b;
+      --medium-text: #475569;
+      --light-text: #94a3b8;
+      --border-color: #e2e8f0;
+      --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark-text);
+      background-color: var(--light-bg);
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--primary-color);
+    }
+    
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    a:hover {
+      color: var(--accent-color);
+    }
+    
+    /* Header & Navigation */
+    header {
+      background-color: var(--primary-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+    
+    .logo a {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    
+    .logo h1 {
+      color: white;
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav li {
+      margin-left: 2rem;
+    }
+    
+    nav a {
+      color: white;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-color);
+      transition: var(--transition);
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .mobile-nav-toggle {
+        display: block;
+      }
+      
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      
+      nav.active {
+        max-height: 300px;
+        padding: 1rem 0;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        padding: 0 1.5rem;
+      }
+      
+      nav li {
+        margin: 0.75rem 0;
+        margin-left: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="/FinBlogs/index.html">
-                    <h1 style="color: white;">Ansh Usrathe</h1>
-                </a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/FinBlogs/index.html">Home</a></li>
-                    <li><a href="/FinBlogs/content/reportsdatabase.html">Reports</a></li>
-                    <li><a href="/FinBlogs/content/modelsdatabase.html">Models</a></li>
-                    <li><a href="/FinBlogs/index.html#featured">Dashboards</a></li>
-                </ul>
-            </nav>
-            <div class="mobile-nav-toggle">
-              <i class="fas fa-bars"></i>
-          </div>
-        </div>
-    </header>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="/FinBlogs/index.html">
+          <h1>Ansh Usrathe</h1>
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/FinBlogs/index.html">Home</a></li>
+          <li><a href="#reports">Reports</a></li>
+          <li><a href="#featured">Models</a></li>
+          <li><a href="#featured">Dashboards</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-nav-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
 
-    <script>
-        // Ensure the DOM is fully loaded before executing scripts
-        document.addEventListener('DOMContentLoaded', function() {
-          // Mobile navigation toggle
-          const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-          const nav = document.querySelector('nav');
-          mobileNavToggle.addEventListener('click', function() {
-            nav.classList.toggle('active');
-          });
-        });
-    </script>
+  <script>
+    // Ensure the DOM is fully loaded before executing scripts
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile navigation toggle
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const nav = document.querySelector('nav');
+      mobileNavToggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
