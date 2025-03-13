@@ -359,10 +359,10 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="#models">Models</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="/FinBlogs/index.html">Home</a></li>
+                    <li><a href="/FinBlogs/content/reportsdatabase.html">Reports</a></li>
+                    <li><a href="/FinBlogs/content/modelsdatabase.html">Models</a></li>
+                    <li><a href="/FinBlogs/index.html#featured">Dashboards</a></li>
                 </ul>
             </nav>
             <div class="mobile-nav-toggle">
@@ -405,8 +405,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section about">
-                    <h3>About Financial Insights</h3>
-                    <p>Independent financial research and analysis to help you make informed investment decisions.</p>
+                    <h3>About Ansh Usrathe</h3>
+                    <p>A constant learner in the diverse field of Finance.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -416,20 +416,20 @@
                 <div class="footer-section links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="/index.html">Home</a></li>
-                        <li><a href="#models">Financial Models</a></li>
+                        <li><a href="/FinBlogs/index.html">Home</a></li>
+                        <li><a href="/FinBlogs/content/reportsdatabase.html">Research Reports</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section contact">
                     <h3>Contact</h3>
-                    <p><i class="fas fa-envelope"></i> contact@financialinsights.com</p>
+                    <p><i class="fas fa-envelope"></i> usratheansh@gmail.com</p>
                     <p class="disclaimer">Disclaimer: The information provided on this site is for educational purposes only and should not be considered financial advice.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Financial Insights. All rights reserved.</p>
+                <p>&copy; 2025 Ansh Usrathe. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -448,51 +448,39 @@
             
             // Function to fetch and populate the Models Cards from reports.json
             async function loadModels() {
-                try {
-                    const response = await fetch('reports/reports.json', { headers: { 'Accept': 'application/json' } });
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    const models = await response.json();
-                    allModels = models.filter(model => model.type && model.type.trim() !== "");
-                    displayModels(allModels);
-                } catch (error) {
-                    console.error('Error fetching models:', error);
-                    document.getElementById('models-data').innerHTML = '<p>Error loading models. Please try again later.</p>';
-                }
-            }
-            
-            // Function to display models based on filter
-            function displayModels(modelsToDisplay) {
+            try {
+                const response = await fetch('reports/reports.json', { headers: { 'Accept': 'application/json' } });
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const models = await response.json();
                 const cardsContainer = document.getElementById('models-data');
-                const noResults = document.getElementById('no-results');
-                
                 cardsContainer.innerHTML = '';
-                
-                if (modelsToDisplay.length === 0) {
-                    noResults.style.display = 'block';
-                    return;
+                models.forEach(model => {
+                // Only create a card if model.type is exactly an empty string.
+                if (model.type && model.type.trim() !== "") {
+                    return; // Skip this object if it has a non-empty type
                 }
-                
-                noResults.style.display = 'none';
-                
-                modelsToDisplay.forEach(model => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.innerHTML = `
-                        <div class="card-header">
-                            <span class="category">${model.category}</span>
-                            <span class="date">${model.date}</span>
-                        </div>
-                        <div class="card-body">
-                            <h3><a href="${model.link}">${model.title}</a></h3>
-                            <p>${model.summary}</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="${model.link}" class="btn btn-outline">View Model</a>
-                        </div>
-                    `;
-                    cardsContainer.appendChild(card);
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-header">
+                    <span class="category">${model.category}</span>
+                    <span class="date">${model.date}</span>
+                    </div>
+                    <div class="card-body">
+                    <h3><a href="${model.link}">${model.title}</a></h3>
+                    <p>${model.summary}</p>
+                    </div>
+                    <div class="card-footer">
+                    <a href="${model.link}" class="btn btn-outline">Read Full Report</a>
+                    </div>
+                `;
+                cardsContainer.appendChild(card);
                 });
+            } catch (error) {
+                console.error('Error fetching models:', error);
             }
+            }
+
             
             // Search functionality
             function setupSearch() {
