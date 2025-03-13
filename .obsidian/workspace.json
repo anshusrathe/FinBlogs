@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "content/reports/deepseeks-advent.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -171,6 +171,7 @@
   },
   "active": "e088aeec5649ca14",
   "lastOpenFiles": [
+    "_includes/image.html",
     "assets/img/reports/chart.png",
     "content/reports/deepseeks-advent.md",
     "content/reports/inpsy.md",
