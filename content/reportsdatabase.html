@@ -410,10 +410,26 @@
                 });
             }
             
-            // Search functionality
+            // Search functionality - enhanced dynamic search
             const searchInput = document.getElementById('search-input');
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase().trim();
+            
+            // Add debounce function to improve performance
+            function debounce(func, wait) {
+                let timeout;
+                return function() {
+                    const context = this;
+                    const args = arguments;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => {
+                        func.apply(context, args);
+                    }, wait);
+                };
+            }
+            
+            // Create a debounced search function
+            // This will only execute the search after the user has stopped typing for 300ms
+            const debouncedSearch = debounce(function() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
                 
                 if (searchTerm === '') {
                     displayReports(allReports);
@@ -429,7 +445,10 @@
                 });
                 
                 displayReports(filteredReports);
-            });
+            }, 300);
+            
+            // Apply the debounced search on input
+            searchInput.addEventListener('input', debouncedSearch);
             
             // Call function to load data
             loadReports();

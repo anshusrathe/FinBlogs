@@ -494,7 +494,7 @@
                 });
             }
             
-            // Search functionality
+            // Search functionality - dynamic search
             function setupSearch() {
                 const searchInput = document.getElementById('search-input');
                 const searchButton = document.getElementById('search-button');
@@ -518,18 +518,16 @@
                     displayModels(filteredModels);
                 }
                 
+                // Add dynamic search - perform search on every keystroke
+                searchInput.addEventListener('input', performSearch);
+                
+                // Keep the button functionality for accessibility
                 searchButton.addEventListener('click', performSearch);
                 
+                // Also maintain Enter key functionality
                 searchInput.addEventListener('keyup', function(event) {
                     if (event.key === 'Enter') {
                         performSearch();
-                    }
-                });
-                
-                // Clear search when input is cleared
-                searchInput.addEventListener('input', function() {
-                    if (this.value === '') {
-                        displayModels(allModels);
                     }
                 });
             }
