@@ -852,7 +852,6 @@ footer {
     max-width: 100%;
     height: auto;
     max-height: 80vh; /* Use viewport height for better scaling */
-    border: 1px solid #ddd;
     display: block;
     margin: 0 auto 1rem;
 }
