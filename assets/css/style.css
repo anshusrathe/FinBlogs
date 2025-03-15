@@ -845,6 +845,7 @@ footer {
     max-width: 2000px;
     margin: 2rem auto; /* center it nicely */
     min-height: auto; /* or remove it entirely */
+    border-radius: 10px;
 }
 
 .ppt-slide img {
